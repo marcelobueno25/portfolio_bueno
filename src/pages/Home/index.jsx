@@ -49,6 +49,7 @@ const Heading = styled(motion.h1)`
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.2;
   max-width: 800px;
+  font-family: "Asta Sans", sans-serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -57,6 +58,11 @@ const Heading = styled(motion.h1)`
 
 const Highlight = styled.span`
   color: ${({ theme }) => theme.colors.accent};
+  font-family: "Playwrite NO", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 2rem; /* tamanho base para desktop */
 `;
 
 const ProfileImage = styled.img`
@@ -106,6 +112,28 @@ const IconCircle = styled.a`
   }
 `;
 
+const SeniorBadge = styled.span`
+  background: linear-gradient(135deg, #00ffe0, #00ffe0);
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0.3rem 2rem;
+  border-radius: 12px;
+  animation: pulse 2s infinite;
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 255, 224, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(0, 255, 224, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 255, 224, 0);
+    }
+  }
+`;
+
 export default function Home() {
   return (
     <ContainerHome>
@@ -119,6 +147,8 @@ export default function Home() {
         >
           Olá, eu sou <Highlight>Marcelo Bueno</Highlight>,<br />
           <GradientText>Desenvolvedor Front-End</GradientText>
+          <br />
+          <SeniorBadge>Pleno \ Sênior</SeniorBadge>
         </Heading>
         <SocialLinks>
           <IconCircle href="https://github.com/marcelobueno25" color="#fff">

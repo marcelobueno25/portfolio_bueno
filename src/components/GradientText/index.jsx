@@ -6,9 +6,10 @@ const GradientText = styled.span`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 40s ease infinite;
-  font-family: "NyghtSerif", serif;
-
-  font-size: 3.5rem; /* tamanho base para desktop */
+  // font-family: "NyghtSerif", serif;
+  font-family: "Space Grotesk", sans-serif;
+  text-transform: uppercase;
+  font-size: 3rem; /* tamanho base para desktop */
   font-weight: bold;
 
   @keyframes gradientShift {

@@ -178,6 +178,7 @@ export default function Contact() {
               ref={captchaRef}
               sitekey={RECAPTCHA_KEY}
               theme="dark" // ou "light" se quiser claro
+              style={{ marginTop: "1rem" }}
             />
           </ContactItem>
         </ContactGroup>
