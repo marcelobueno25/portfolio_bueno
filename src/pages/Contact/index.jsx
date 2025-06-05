@@ -28,7 +28,8 @@ const Title = styled.h2`
 
 const InfoColumn = styled.div`
   flex: 1;
-  min-width: 300px;
+  // min-width: 300px;
+  width: 100%;
 `;
 
 const ContactGroup = styled.div`
@@ -50,7 +51,8 @@ const Icon = styled.span`
 
 const FormColumn = styled.form`
   flex: 1;
-  min-width: 300px;
+  // min-width: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
