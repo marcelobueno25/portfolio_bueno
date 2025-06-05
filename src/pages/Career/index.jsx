@@ -9,7 +9,14 @@ import {
   FaCss3Alt,
   FaJs,
   FaMicrosoft,
+  FaFlask,
+  FaGitlab,
+  FaLess,
+  FaSass,
+  FaUnity,
+  FaVuejs,
 } from "react-icons/fa";
+import TechTags from "@/components/TechTags";
 
 const Section = styled(Container)`
   padding: 8rem 2rem 4rem;
@@ -104,20 +111,19 @@ export default function Carreira() {
             Angular e .NET. Atuação em equipe multidisciplinar focada em
             entregas estratégicas e alto desempenho.
           </Description>
-          <Tags>
-            <Tag>
-              <FaReact /> React
-            </Tag>
-            <Tag>
-              <FaNodeJs /> Node.js
-            </Tag>
-            <Tag>
-              <FaAngular /> Angular
-            </Tag>
-            <Tag>
-              <FaMicrosoft /> .NET
-            </Tag>
-          </Tags>
+          <TechTags
+            items={[
+              { icon: FaGitlab, label: "GitLab" },
+              { icon: FaReact, label: "React" },
+              { icon: FaNodeJs, label: "Node.js" },
+              { icon: FaAngular, label: "Angular" },
+              { icon: FaMicrosoft, label: ".NET" },
+              { icon: FaHtml5, label: "HTML5" },
+              { icon: FaCss3Alt, label: "CSS3" },
+              { icon: FaJs, label: "JavaScript" },
+              { icon: FaFlask, label: "Jest" },
+            ]}
+          />
         </Job>
         <Job>
           <JobTitle>Desenvolvedor Front-End</JobTitle>
@@ -126,17 +132,15 @@ export default function Carreira() {
             Criação de jogos educacionais, landing pages e onboarding de novos
             membros. Uso de HTML5, CSS3, JavaScript.
           </Description>
-          <Tags>
-            <Tag>
-              <FaHtml5 /> HTML5
-            </Tag>
-            <Tag>
-              <FaCss3Alt /> CSS3
-            </Tag>
-            <Tag>
-              <FaJs /> JavaScript
-            </Tag>
-          </Tags>
+          <TechTags
+            items={[
+              { icon: FaGitlab, label: "GitLab" },
+              { icon: FaHtml5, label: "HTML5" },
+              { icon: FaCss3Alt, label: "CSS3" },
+              { icon: FaJs, label: "JavaScript" },
+              { icon: FaUnity, label: "Unity " },
+            ]}
+          />
         </Job>
         <Job>
           <JobTitle>Desenvolvedor Front-End</JobTitle>
@@ -145,17 +149,17 @@ export default function Carreira() {
             Atuação no Bradesco Seguros com foco em landing pages,
             compatibilidade cross-browser e suporte ao SharePoint 2013.
           </Description>
-          <Tags>
-            <Tag>
-              <FaHtml5 /> HTML5
-            </Tag>
-            <Tag>
-              <FaCss3Alt /> CSS3
-            </Tag>
-            <Tag>
-              <FaJs /> JavaScript
-            </Tag>
-          </Tags>
+          <TechTags
+            items={[
+              { icon: FaGitlab, label: "GitLab" },
+              { icon: FaHtml5, label: "HTML5" },
+              { icon: FaCss3Alt, label: "CSS3" },
+              { icon: FaJs, label: "JavaScript" },
+              { icon: FaVuejs, label: "Vue" },
+              { icon: FaLess, label: "Less" },
+              { icon: FaSass, label: "Sass" },
+            ]}
+          />
         </Job>
         <Job>
           <JobTitle>Suporte Técnico</JobTitle>
