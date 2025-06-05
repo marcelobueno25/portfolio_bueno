@@ -53,7 +53,7 @@ const Description = styled.p`
   color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-export default function Carreira() {
+export default function Career() {
   return (
     <Section id="carreira">
       <Title
