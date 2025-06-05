@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Container from "@/components/Container";
 import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Section = styled(Container)`
   padding: 6rem 2rem;
@@ -100,6 +102,31 @@ const Button = styled.button`
 `;
 
 export default function Contact() {
+  const form = useRef();
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_cd6q1k4", // <- coloque o seu
+        "template_9w79x1t", // <- coloque o seu
+        form.current,
+        "uhd6Zw0pJ7IhYKYPG" // <- coloque o seu
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setStatus("Mensagem enviada com sucesso!");
+          form.current.reset();
+        },
+        (error) => {
+          console.log(error.text);
+          setStatus("Ocorreu um erro. Tente novamente.");
+        }
+      );
+  };
   return (
     <Section id="contato">
       <InfoColumn>
@@ -134,14 +161,15 @@ export default function Contact() {
         </ContactGroup>
       </InfoColumn>
 
-      <FormColumn>
+      <FormColumn ref={form} onSubmit={sendEmail}>
         <Label>Nome</Label>
-        <Input type="text" placeholder="Seu nome" />
+        <Input type="text" name="from_name" required />
         <Label>E-mail</Label>
-        <Input type="email" placeholder="Seu e-mail" />
+        <Input type="email" name="from_email" required />
         <Label>Mensagem</Label>
-        <TextArea placeholder="Escreva sua mensagem" />
-        <Button>Enviar mensagem</Button>
+        <TextArea name="message" required />
+        <Button type="submit">Enviar mensagem</Button>
+        {status && <p style={{ marginTop: "1rem", color: "#0f0" }}>{status}</p>}
       </FormColumn>
     </Section>
   );
