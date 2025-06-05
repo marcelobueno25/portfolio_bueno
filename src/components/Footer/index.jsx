@@ -8,6 +8,7 @@ const FooterContainer = styled.footer`
   text-align: center;
   font-size: 0.9rem;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
+  margin-top: 5rem;
 
   @media (max-width: 768px) {
     padding: 1.5rem 4vw;

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Container from "@/components/Container";
 
 const Section = styled(Container)`
-  padding: 5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 5rem;
 `;
 
 const Title = styled.h2`

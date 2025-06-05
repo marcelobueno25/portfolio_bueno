@@ -15,11 +15,11 @@ export default function AppRoutes() {
               <section id="home">
                 <Home />
               </section>
-              <section id="projetos">
-                <Projects />
-              </section>
               <section id="sobre">
                 <About />
+              </section>
+              <section id="projetos">
+                <Projects />
               </section>
               <section id="contato">
                 <Contact />

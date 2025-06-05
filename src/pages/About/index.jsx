@@ -5,10 +5,10 @@ import { ScrollingBanner } from "@/components/ScrollingBanner";
 import Container from "@/components/Container";
 
 const Section = styled(Container)`
-  padding: 5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 5rem;
 `;
 
 const Title = styled.h2`
@@ -18,7 +18,6 @@ const Title = styled.h2`
 `;
 
 const Paragraph = styled(motion.p)`
-  max-width: 800px;
   color: ${({ theme }) => theme.colors.textSecondary};
   font-size: 1.1rem;
   line-height: 1.6;

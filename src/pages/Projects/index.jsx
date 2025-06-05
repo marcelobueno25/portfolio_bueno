@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Container from "@/components/Container";
 
 const Section = styled(Container)`
-  padding: 0 5vw;
   display: flex;
   flex-direction: column;
+  margin-top: 5rem;
 `;
 
 const Title = styled.h2`
