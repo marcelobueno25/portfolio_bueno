@@ -3,6 +3,9 @@ import Container from "@/components/Container";
 import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const RECAPTCHA_KEY = "6LewxlYrAAAAAOw1jUdKc0JdPum2qrEGR9keWMXr"; // vinda do site do Google
 
 const Section = styled(Container)`
   padding: 6rem 2rem;
@@ -103,11 +106,22 @@ const Button = styled.button`
 
 export default function Contact() {
   const form = useRef();
+  const captchaRef = useRef();
   const [status, setStatus] = useState("");
 
+  // 👇 Envia o formulário para o EmailJS
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Pega o token do reCAPTCHA
+    const token = captchaRef.current.getValue();
+
+    if (!token) {
+      setStatus("❗ Por favor, confirme que você não é um robô.");
+      return;
+    }
+
+    // Envia o formulário usando EmailJS
     emailjs
       .sendForm(
         "service_cd6q1k4", // <- coloque o seu
@@ -116,17 +130,17 @@ export default function Contact() {
         "uhd6Zw0pJ7IhYKYPG" // <- coloque o seu
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("Mensagem enviada com sucesso!");
+        () => {
+          setStatus("✅ Mensagem enviada com sucesso!");
           form.current.reset();
+          captchaRef.current.reset(); // limpa o reCAPTCHA
         },
-        (error) => {
-          console.log(error.text);
-          setStatus("Ocorreu um erro. Tente novamente.");
+        () => {
+          setStatus("❌ Ocorreu um erro. Tente novamente.");
         }
       );
   };
+
   return (
     <Section id="contato">
       <InfoColumn>
@@ -157,6 +171,14 @@ export default function Contact() {
               <FaMapMarkerAlt />
             </Icon>
             <span>Osasco - SP</span>
+          </ContactItem>
+
+          <ContactItem>
+            <ReCAPTCHA
+              ref={captchaRef}
+              sitekey={RECAPTCHA_KEY}
+              theme="dark" // ou "light" se quiser claro
+            />
           </ContactItem>
         </ContactGroup>
       </InfoColumn>
