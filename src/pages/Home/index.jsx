@@ -44,13 +44,13 @@ const ContainerHome = styled(Container)`
 `;
 
 const Heading = styled(motion.h1)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.2;
   max-width: 800px;
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `;
 

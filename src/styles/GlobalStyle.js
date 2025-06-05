@@ -1,6 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+ @font-face {
+    font-family: "NyghtSerif";
+    src: url("/src/fonts/NyghtSerif-Light.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
    body {
     margin: 0;
     padding: 0;
