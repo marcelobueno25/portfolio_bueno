@@ -160,6 +160,11 @@ const DownloadButton = styled.a`
   text-decoration: none;
   transition: background 0.3s, color 0.3s;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 480px) {
     width: 100%;
     margin-bottom: 1rem;
