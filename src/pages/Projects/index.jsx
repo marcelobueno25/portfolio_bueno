@@ -114,7 +114,7 @@ export default function Projects() {
         "Aplicação de e-commerce fictícia para venda de cafés especiais com carrinho e formulário de entrega.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
-      image: "projects/teste.png",
+      image: "projects/coffee-delivery.png",
     },
     {
       title: "FeedHub (React)",
@@ -130,7 +130,7 @@ export default function Projects() {
         "Lista de tarefas para adicionar, concluir e remover atividades.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
-      image: "projects/teste.png",
+      image: "projects/todo-list.png",
     },
     {
       title: "Game - Número Secreto",
@@ -185,7 +185,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "projects/teste.png",
+      image: "projects/caminar.png",
     },
     {
       title: "Caravan",
@@ -209,7 +209,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "projects/teste.png",
+      image: "projects/construtiva.png",
     },
     {
       title: "Sistema biométrico | Arduino",
@@ -217,7 +217,7 @@ export default function Projects() {
         "Projeto acadêmico de segurança com acesso biométrico e controle de agrotóxicos.",
       date: "jul de 2018 - nov de 2018",
       techs: [{ icon: SiArduino, label: "Arduino" }],
-      image: "projects/teste.png",
+      image: "projects/sistema-biometrico.jpg",
     },
     {
       title: "App de Comunicação | Android",
@@ -225,7 +225,7 @@ export default function Projects() {
         "App para medição da poluição e comunicação entre trabalhadores.",
       date: "fev de 2018 - jun de 2018",
       techs: [{ icon: FaJava, label: "Java" }],
-      image: "projects/teste.png",
+      image: "projects/android.jpeg",
     },
     {
       title: "Sabil",
@@ -237,7 +237,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "projects/teste.png",
+      image: "projects/sabil.png",
     },
     {
       title: "Métodos de Ordenação",
@@ -245,7 +245,7 @@ export default function Projects() {
         "Software acadêmico para comparar performance de algoritmos de ordenação.",
       date: "ago de 2017 - nov de 2017",
       techs: [{ icon: FaJava, label: "Java" }],
-      image: "projects/teste.png",
+      image: "projects/metodos-de-ordenacao.png",
     },
     {
       title: "Jogo sobre Sustentabilidade",
@@ -253,38 +253,7 @@ export default function Projects() {
         "Jogo educativo para separar resíduos recicláveis, feito em Construct 2.",
       date: "2017",
       techs: [{ icon: FaProjectDiagram, label: "Construct 2" }],
-      image: "projects/teste.png",
-    },
-    {
-      title: "Portfólio Pessoal",
-      description:
-        "Site pessoal feito com React e styled-components, foco em animação e identidade visual.",
-      date: "2024",
-      techs: [
-        { icon: FaReact, label: "React" },
-        { icon: SiStyledcomponents, label: "Styled Components" },
-      ],
-      image: "projects/teste.png",
-    },
-    {
-      title: "Landing Page Freelancer",
-      description: "Landing page responsiva para um cliente da área de design.",
-      date: "2023",
-      techs: [
-        { icon: FaReact, label: "React" },
-        { icon: FaCss3Alt, label: "CSS3" },
-      ],
-      image: "projects/teste.png",
-    },
-    {
-      title: "Dashboard Financeiro",
-      description: "Dashboard com gráficos e consumo de API usando Chart.js.",
-      date: "2023",
-      techs: [
-        { icon: FaReact, label: "React" },
-        { icon: SiChartdotjs, label: "Chart.js" },
-      ],
-      image: "projects/teste.png",
+      image: "projects/android.jpeg",
     },
   ];
 
