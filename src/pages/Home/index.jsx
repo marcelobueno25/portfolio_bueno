@@ -55,6 +55,10 @@ const Heading = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
+
+  @media (max-width: 480px) {
+    font-size: 1.7rem;
+  }
 `;
 
 const Highlight = styled.span`
@@ -63,7 +67,13 @@ const Highlight = styled.span`
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 200;
-  font-size: 2rem; /* tamanho base para desktop */
+  font-size: 2rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.7rem;
+  }
 `;
 
 const ProfileImage = styled.img`
