@@ -3,6 +3,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
+import Career from "@/pages/Career";
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,9 @@ export default function AppRoutes() {
               </section>
               <section id="sobre">
                 <About />
+              </section>
+              <section id="carreira">
+                <Career />
               </section>
               <section id="projetos">
                 <Projects />
