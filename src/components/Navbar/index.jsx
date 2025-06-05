@@ -1,7 +1,13 @@
 // src/components/Header.jsx
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FaHome, FaProjectDiagram, FaUser, FaEnvelope } from "react-icons/fa";
+import {
+  FaHome,
+  FaProjectDiagram,
+  FaUser,
+  FaEnvelope,
+  FaBriefcase,
+} from "react-icons/fa";
 
 const Nav = styled.nav`
   position: fixed;
@@ -94,6 +100,10 @@ export default function Header() {
       <NavLink href="#sobre">
         <FaUser />
         <span>Sobre</span>
+      </NavLink>
+      <NavLink href="#carreira">
+        <FaBriefcase />
+        <span>Carreira</span>
       </NavLink>
       <NavLink href="#projetos">
         <FaProjectDiagram />
