@@ -1,64 +1,148 @@
-// src/sections/Contact.jsx
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import Container from "@/components/Container";
+import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 
 const Section = styled(Container)`
+  padding: 6rem 2rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.textPrimary};
   font-size: 2.5rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
   margin-bottom: 2rem;
 `;
 
-const Info = styled(motion.div)`
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 1.1rem;
-  line-height: 1.8;
+const InfoColumn = styled.div`
+  flex: 1;
+  min-width: 300px;
 `;
 
-const Link = styled.a`
-  display: block;
+const ContactGroup = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.6rem 0;
+  color: ${({ theme }) => theme.colors.textPrimary};
+`;
+
+const Icon = styled.span`
   color: ${({ theme }) => theme.colors.accent};
-  font-weight: bold;
-  margin-top: 1rem;
-  text-decoration: none;
+  font-size: 1rem;
+`;
+
+const FormColumn = styled.form`
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Label = styled.label`
+  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+const Input = styled.input`
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  padding: 0.75rem 1rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  border-radius: 6px;
+  outline: none;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+const TextArea = styled.textarea`
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  padding: 0.75rem 1rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+const Button = styled.button`
+  background: ${({ theme }) => theme.colors.accent};
+  color: #0a0a0a;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `;
 
 export default function Contact() {
   return (
-    <Section>
-      <Title>Contato</Title>
-      <Info
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        Estou disponível para novas oportunidades, colaborações ou simplesmente
-        bater um papo sobre tecnologia e design.
-        <br />
-        Me mande um e-mail ou me chame nas redes sociais.
-        <Link href="mailto:marcelo@email.com">marcelo@email.com</Link>
-        <Link
-          href="https://www.linkedin.com/in/marcelo-bueno-developer"
-          target="_blank"
-        >
-          LinkedIn
-        </Link>
-        <Link href="https://github.com/seu-usuario" target="_blank">
-          GitHub
-        </Link>
-      </Info>
+    <Section id="contato">
+      <InfoColumn>
+        <Title>Contato</Title>
+
+        <ContactGroup>
+          <strong>Entre em contato</strong>
+          <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: "#888" }}>
+            Me mande um e-mail, mensagem ou me chame nas redes sociais.
+          </p>
+        </ContactGroup>
+
+        <ContactGroup>
+          <ContactItem>
+            <Icon>
+              <FaEnvelope />
+            </Icon>
+            <span>marcelobueno_developer@outlook.com</span>
+          </ContactItem>
+          <ContactItem>
+            <Icon>
+              <FaWhatsapp />
+            </Icon>
+            <span>+55 (11) 94042-5798</span>
+          </ContactItem>
+          <ContactItem>
+            <Icon>
+              <FaMapMarkerAlt />
+            </Icon>
+            <span>Osasco - SP</span>
+          </ContactItem>
+        </ContactGroup>
+      </InfoColumn>
+
+      <FormColumn>
+        <Label>Nome</Label>
+        <Input type="text" placeholder="Seu nome" />
+        <Label>E-mail</Label>
+        <Input type="email" placeholder="Seu e-mail" />
+        <Label>Mensagem</Label>
+        <TextArea placeholder="Escreva sua mensagem" />
+        <Button>Enviar mensagem</Button>
+      </FormColumn>
     </Section>
   );
 }
