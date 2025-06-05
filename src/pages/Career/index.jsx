@@ -1,43 +1,62 @@
 // src/pages/Carreira.jsx
 import styled from "styled-components";
 import Container from "@/components/Container";
-import { motion } from "framer-motion";
+import {
+  FaReact,
+  FaNodeJs,
+  FaAngular,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaMicrosoft,
+} from "react-icons/fa";
 
 const Section = styled(Container)`
   padding: 8rem 2rem 4rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
-  gap: 2rem;
-  text-align: center;
+  text-align: left;
 `;
 
-const Title = styled(motion.h2)`
+const Title = styled.h2`
   font-size: 2.5rem;
   color: ${({ theme }) => theme.colors.textPrimary};
+  margin-bottom: 3rem;
 `;
 
-const Timeline = styled.div`
+const Timeline = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 700px;
+  gap: 2rem;
+  max-width: 720px;
   width: 100%;
+  padding-left: 1.5rem;
+  border-left: 2px solid ${({ theme }) => theme.colors.border};
+  list-style-type: none;
 `;
 
-const Job = styled.div`
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: left;
+const Job = styled.li`
+  position: relative;
+  padding-left: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.8rem;
+    left: -2.05rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.accent};
+    border: 2px solid ${({ theme }) => theme.colors.background};
+  }
 `;
 
 const JobTitle = styled.h3`
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.accent};
 `;
 
@@ -53,16 +72,29 @@ const Description = styled.p`
   color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-export default function Career() {
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+`;
+
+const Tag = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+`;
+
+export default function Carreira() {
   return (
     <Section id="carreira">
-      <Title
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Minha Carreira
-      </Title>
+      <Title>Minha Carreira</Title>
       <Timeline>
         <Job>
           <JobTitle>Analista de Desenvolvimento</JobTitle>
@@ -72,6 +104,20 @@ export default function Career() {
             Angular e .NET. Atuação em equipe multidisciplinar focada em
             entregas estratégicas e alto desempenho.
           </Description>
+          <Tags>
+            <Tag>
+              <FaReact /> React
+            </Tag>
+            <Tag>
+              <FaNodeJs /> Node.js
+            </Tag>
+            <Tag>
+              <FaAngular /> Angular
+            </Tag>
+            <Tag>
+              <FaMicrosoft /> .NET
+            </Tag>
+          </Tags>
         </Job>
         <Job>
           <JobTitle>Desenvolvedor Front-End</JobTitle>
@@ -80,6 +126,17 @@ export default function Career() {
             Criação de jogos educacionais, landing pages e onboarding de novos
             membros. Uso de HTML5, CSS3, JavaScript.
           </Description>
+          <Tags>
+            <Tag>
+              <FaHtml5 /> HTML5
+            </Tag>
+            <Tag>
+              <FaCss3Alt /> CSS3
+            </Tag>
+            <Tag>
+              <FaJs /> JavaScript
+            </Tag>
+          </Tags>
         </Job>
         <Job>
           <JobTitle>Desenvolvedor Front-End</JobTitle>
@@ -88,6 +145,17 @@ export default function Career() {
             Atuação no Bradesco Seguros com foco em landing pages,
             compatibilidade cross-browser e suporte ao SharePoint 2013.
           </Description>
+          <Tags>
+            <Tag>
+              <FaHtml5 /> HTML5
+            </Tag>
+            <Tag>
+              <FaCss3Alt /> CSS3
+            </Tag>
+            <Tag>
+              <FaJs /> JavaScript
+            </Tag>
+          </Tags>
         </Job>
         <Job>
           <JobTitle>Suporte Técnico</JobTitle>
