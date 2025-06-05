@@ -11,6 +11,7 @@ import {
   FaFacebook,
   FaTiktok,
 } from "react-icons/fa";
+import BackgroundEffect from "@/components/BackgroundEffect";
 
 const gradientBorder = keyframes`
   0% {
@@ -108,6 +109,7 @@ const IconCircle = styled.a`
 export default function Home() {
   return (
     <ContainerHome>
+      <BackgroundEffect />
       <ProfileImage src={MinhaFoto} alt="Minha foto" />
       <div>
         <Heading
@@ -124,20 +126,20 @@ export default function Home() {
           </IconCircle>
           <IconCircle
             href="https://www.linkedin.com/in/marcelo-bueno-developer/"
-            color="#0A66C2"
+            color="#fff"
           >
             <FaLinkedin />
           </IconCircle>
           <IconCircle
             href="https://www.instagram.com/visao_de_programador/"
-            color="#E1306C"
+            color="#fff"
           >
             <FaInstagram />
           </IconCircle>
-          <IconCircle href="https://facebook.com/" color="#1877F2">
+          <IconCircle href="https://facebook.com/" color="#fff">
             <FaFacebook />
           </IconCircle>
-          <IconCircle href="https://www.tiktok.com/@buenodev_" color="#eee">
+          <IconCircle href="https://www.tiktok.com/@buenodev_" color="#fff">
             <FaTiktok />
           </IconCircle>
         </SocialLinks>
