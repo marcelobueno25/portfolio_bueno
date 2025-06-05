@@ -114,7 +114,7 @@ export default function Projects() {
         "Aplicação de e-commerce fictícia para venda de cafés especiais com carrinho e formulário de entrega.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "FeedHub (React)",
@@ -122,7 +122,7 @@ export default function Projects() {
         "Rede social fictícia para treinar componentes, props, estado e CSS Modules.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
-      image: "src/assets/projects/feedhub.png",
+      image: "projects/feedhub.png",
     },
     {
       title: "ToDo List",
@@ -130,7 +130,7 @@ export default function Projects() {
         "Lista de tarefas para adicionar, concluir e remover atividades.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Game - Número Secreto",
@@ -140,7 +140,7 @@ export default function Projects() {
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/numero-secreto.png",
+      image: "projects/numero-secreto.png",
     },
     {
       title: "Pokédex (Angular)",
@@ -154,7 +154,7 @@ export default function Projects() {
         { icon: SiSass, label: "Sass" },
         { icon: FaHtml5, label: "HTML5" },
       ],
-      image: "src/assets/projects/pokedex.png",
+      image: "projects/pokedex.png",
     },
     {
       title: "Police and Thief (Android)",
@@ -162,7 +162,7 @@ export default function Projects() {
         "Jogo retrô baseado em Keystone Kapers. Desenvolvido em Unity com C#.",
       date: "fev de 2019 - jul de 2019",
       techs: [{ icon: FaUnity, label: "Unity" }],
-      image: "src/assets/projects/police-and-thief.jpeg",
+      image: "projects/police-and-thief.jpeg",
     },
     {
       title: "Base Apparel",
@@ -174,7 +174,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/frontend-mentor.jpg",
+      image: "projects/frontend-mentor.jpg",
     },
     {
       title: "Caminar",
@@ -185,7 +185,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Caravan",
@@ -197,7 +197,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/caravan.png",
+      image: "projects/caravan.png",
     },
     {
       title: "Construtiva",
@@ -209,7 +209,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Sistema biométrico | Arduino",
@@ -217,7 +217,7 @@ export default function Projects() {
         "Projeto acadêmico de segurança com acesso biométrico e controle de agrotóxicos.",
       date: "jul de 2018 - nov de 2018",
       techs: [{ icon: SiArduino, label: "Arduino" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "App de Comunicação | Android",
@@ -225,7 +225,7 @@ export default function Projects() {
         "App para medição da poluição e comunicação entre trabalhadores.",
       date: "fev de 2018 - jun de 2018",
       techs: [{ icon: FaJava, label: "Java" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Sabil",
@@ -237,7 +237,7 @@ export default function Projects() {
         { icon: FaCss3Alt, label: "CSS3" },
         { icon: FaJs, label: "JavaScript" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Métodos de Ordenação",
@@ -245,7 +245,7 @@ export default function Projects() {
         "Software acadêmico para comparar performance de algoritmos de ordenação.",
       date: "ago de 2017 - nov de 2017",
       techs: [{ icon: FaJava, label: "Java" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Jogo sobre Sustentabilidade",
@@ -253,7 +253,7 @@ export default function Projects() {
         "Jogo educativo para separar resíduos recicláveis, feito em Construct 2.",
       date: "2017",
       techs: [{ icon: FaProjectDiagram, label: "Construct 2" }],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Portfólio Pessoal",
@@ -264,7 +264,7 @@ export default function Projects() {
         { icon: FaReact, label: "React" },
         { icon: SiStyledcomponents, label: "Styled Components" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Landing Page Freelancer",
@@ -274,7 +274,7 @@ export default function Projects() {
         { icon: FaReact, label: "React" },
         { icon: FaCss3Alt, label: "CSS3" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
     {
       title: "Dashboard Financeiro",
@@ -284,7 +284,7 @@ export default function Projects() {
         { icon: FaReact, label: "React" },
         { icon: SiChartdotjs, label: "Chart.js" },
       ],
-      image: "src/assets/projects/teste.png",
+      image: "projects/teste.png",
     },
   ];
 
