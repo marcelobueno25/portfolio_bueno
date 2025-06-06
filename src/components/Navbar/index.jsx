@@ -28,6 +28,7 @@ const HeaderWrapper = styled.header`
 
   @media (max-width: 480px) {
     justify-content: space-between;
+    padding: 0 1rem;
   }
 `;
 
@@ -78,7 +79,7 @@ const NavLink = styled.a`
   }
 
   @media (max-width: 480px) {
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 0.8rem;
   }
 `;
 
