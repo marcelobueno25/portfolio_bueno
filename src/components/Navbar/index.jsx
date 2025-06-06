@@ -124,37 +124,54 @@ const ThemeToggle = styled.button`
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [darkMode, setDarkMode] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "sobre", "carreira", "projetos", "contato"];
-      for (let id of sections) {
-        const section = document.getElementById(id);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            setActiveSection(id);
-            break;
-          }
-        }
-      }
+    let ticking = false;
 
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateSection();
+          updateHeaderVisibility();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    const updateSection = () => {
+      const sections = ["home", "sobre", "carreira", "projetos", "contato"];
+      const active = sections.find((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= 200 && rect.bottom >= 200;
+        }
+        return false;
+      });
+
+      if (active && active !== activeSection) {
+        setActiveSection(active);
+      }
+    };
+
+    const updateHeaderVisibility = () => {
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY;
-      setIsVisible(!scrollingDown || currentScrollY < 100);
+      const shouldShow = !scrollingDown || currentScrollY < 100;
+
+      setIsVisible(shouldShow);
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, activeSection]);
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
     <HeaderWrapper isVisible={isVisible}>
