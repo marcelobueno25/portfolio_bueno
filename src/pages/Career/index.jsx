@@ -80,7 +80,7 @@ const Description = styled.p`
 
 const Button = styled.button`
   background: ${({ theme }) => theme.colors.accent};
-  color: #0a0a0a;
+  color: ${({ theme }) => theme.colors.muted};
   border: none;
   padding: 0.7rem 1.4rem;
   font-weight: 600;

@@ -18,7 +18,7 @@ const ContainerBanner = styled.div`
 
 const BannerWrapper = styled.div`
   transform: rotate(-3deg);
-  background: #0a0a0a;
+  background: ${({ theme }) => theme.colors.background};
   border-top: 1px solid ${({ theme }) => theme.colors.border};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
@@ -38,7 +38,7 @@ const Item = styled.span`
   padding: 1rem 1.5rem;
   font-weight: bold;
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.textPrimary};
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ const Item = styled.span`
 const Dot = styled.span`
   margin: 0 1.5rem;
   font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.textPrimary};
   display: flex;
   align-items: center;
 `;

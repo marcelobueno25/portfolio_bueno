@@ -122,10 +122,9 @@ const ThemeToggle = styled.button`
   }
 `;
 
-export default function Header() {
+export default function Header({ isDarkMode, toggleTheme }) {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [darkMode, setDarkMode] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
@@ -171,8 +170,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, activeSection]);
 
-  const toggleTheme = () => setDarkMode((prev) => !prev);
-
   return (
     <HeaderWrapper isVisible={isVisible}>
       <Logo>
@@ -201,8 +198,8 @@ export default function Header() {
           <span>Contato</span>
         </NavLink>
       </Nav>
-      <ThemeToggle onClick={toggleTheme} aria-label="Toggle Theme">
-        {darkMode ? <FaMoon /> : <FaSun />}
+      <ThemeToggle onClick={toggleTheme}>
+        {isDarkMode ? <FaSun /> : <FaMoon />}
       </ThemeToggle>
     </HeaderWrapper>
   );

@@ -18,13 +18,13 @@ export const IconCircle = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 2px solid ${({ color }) => color};
-  color: ${({ color }) => color};
+  border: 2px solid ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.textPrimary};
   background: transparent;
   transition: 0.3s;
 
   &:hover {
-    background: ${({ color }) => color};
-    color: #0a0a0a;
+    background: ${({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

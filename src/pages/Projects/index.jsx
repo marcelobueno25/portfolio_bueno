@@ -38,7 +38,7 @@ const Grid = styled.div`
 `;
 
 const Card = styled(motion.div)`
-  background: #111;
+  background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   padding: 1.5rem;
@@ -73,7 +73,7 @@ const Button = styled.button`
   font-size: 0.9rem;
   font-weight: 600;
   background: ${({ theme }) => theme.colors.accent};
-  color: #0a0a0a;
+  color: ${({ theme }) => theme.colors.muted};
   border: none;
   border-radius: 6px;
   cursor: pointer;

@@ -20,6 +20,7 @@ import SeniorBadge from "@/components/SeniorBadge";
 import DownloadButton from "@/components/DownloadButton";
 
 const ContainerHome = styled(Container)`
+  transition: background-color 0.3s ease, color 0.3s ease;
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -62,7 +63,7 @@ const Heading = styled(motion.h1)`
 `;
 
 const Highlight = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.textPrimary};
   font-family: "Playwrite NO", cursive;
   font-optical-sizing: auto;
   font-style: normal;

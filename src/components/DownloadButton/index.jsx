@@ -7,8 +7,8 @@ const DownloadButton = styled.a`
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
-  border: 2px solid #fff;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  border: 2px solid ${({ theme }) => theme.colors.textPrimary};
   background: transparent;
   border-radius: 25px;
   text-decoration: none;
@@ -26,8 +26,8 @@ const DownloadButton = styled.a`
   }
 
   &:hover {
-    background: #fff;
-    color: #0a0a0a;
+    background: ${({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 

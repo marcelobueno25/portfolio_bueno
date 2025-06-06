@@ -1,15 +1,25 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { GlobalStyle } from "./styles/GlobalStyle.js";
-import { theme } from "./styles/theme.js";
+import { darkTheme, lightTheme } from "./styles/theme.js";
 import { ThemeProvider } from "styled-components";
 import App from "./App.jsx";
 
+function ThemedApp() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const toggleTheme = () => setIsDarkMode((prev) => !prev);
+
+  return (
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <GlobalStyle />
+      <App toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+    </ThemeProvider>
+  );
+}
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <ThemedApp />
   </StrictMode>
 );

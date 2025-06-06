@@ -5,7 +5,8 @@ const BackgroundWrapper = styled.div`
   inset: 0;
   z-index: -1;
   background: radial-gradient(circle at 20% 40%, #00ffe030 5%, transparent 60%),
-    radial-gradient(circle at 70% 60%, #ff00ff20 0%, transparent 60%), #0a0a0a;
+    radial-gradient(circle at 70% 60%, #ff00ff20 0%, transparent 60%),
+    ${({ theme }) => theme.colors.background}; // <- Aqui vem do tema
   pointer-events: none;
   overflow: hidden;
 `;

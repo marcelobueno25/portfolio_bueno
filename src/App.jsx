@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 import Intro from "@/pages/Intro";
 import AppRoutes from "./routes";
 
-function App() {
+function App({ toggleTheme, isDarkMode }) {
   return (
     <>
       {/* <Intro /> */}
-      <Navbar />
+      <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <AppRoutes />
       <Footer />
     </>

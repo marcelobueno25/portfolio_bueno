@@ -14,7 +14,7 @@ const StyledIndicator = styled(motion.div)`
   .mouse {
     width: 24px;
     height: 40px;
-    border: 2px solid #fff;
+    border: 2px solid ${({ theme }) => theme.colors.textPrimary};
     border-radius: 12px;
     position: relative;
   }
@@ -27,7 +27,7 @@ const StyledIndicator = styled(motion.div)`
     transform: translateX(-50%);
     width: 4px;
     height: 8px;
-    background: #fff;
+    background: ${({ theme }) => theme.colors.textPrimary};
     border-radius: 4px;
     animation: wheel 1.5s infinite;
   }
@@ -56,7 +56,7 @@ const StyledIndicator = styled(motion.div)`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-top: 6px solid ${({ theme }) => theme.colors.accent};
     animation: blink 1.5s infinite;
   }
 

@@ -46,7 +46,7 @@ const ContactItem = styled.div`
 `;
 
 const Icon = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.accent};
   font-size: 1rem;
 `;
 
@@ -65,7 +65,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  background: #111;
+  background: ${({ theme }) => theme.colors.muted};
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0.75rem 1rem;
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -78,7 +78,7 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  background: #111;
+  background: ${({ theme }) => theme.colors.muted};
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0.75rem 1rem;
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -94,7 +94,7 @@ const TextArea = styled.textarea`
 
 const Button = styled.button`
   background: ${({ theme }) => theme.colors.accent};
-  color: #0a0a0a;
+  color: ${({ theme }) => theme.colors.muted};
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
