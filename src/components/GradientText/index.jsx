@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const GradientText = styled.span`
+  display: inline-block;
   background: linear-gradient(270deg, #00ffe0, #ff00ff, #00ffe0);
   background-size: 600% 600%;
   -webkit-background-clip: text;
@@ -26,11 +27,12 @@ const GradientText = styled.span`
 
   /* Responsivo */
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   @media (max-width: 480px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin: 10px 0;
   }
 `;
 
