@@ -110,17 +110,13 @@ const ThemeToggle = styled.button`
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border-radius: 999px;
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 0.6rem;
   cursor: pointer;
-  color: #00bfff;
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
 `;
 
 export default function Header({ isDarkMode, toggleTheme }) {
