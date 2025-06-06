@@ -7,10 +7,9 @@ const GradientText = styled.span`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 40s ease infinite;
-  // font-family: "NyghtSerif", serif;
   font-family: "Space Grotesk", sans-serif;
   text-transform: uppercase;
-  font-size: 3rem; /* tamanho base para desktop */
+  font-size: ${({ fontSize }) => fontSize || "3rem"};
   font-weight: bold;
 
   @keyframes gradientShift {
@@ -25,13 +24,14 @@ const GradientText = styled.span`
     }
   }
 
-  /* Responsivo */
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: ${({ fontSize }) =>
+      fontSize ? `calc(${fontSize} * 0.8)` : "2.5rem"};
   }
 
   @media (max-width: 480px) {
-    font-size: 2rem;
+    font-size: ${({ fontSize }) =>
+      fontSize ? `calc(${fontSize} * 0.66)` : "2rem"};
     margin: 10px 0;
   }
 `;
