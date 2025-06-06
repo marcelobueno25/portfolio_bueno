@@ -42,10 +42,11 @@ const ContactItem = styled.div`
   gap: 0.8rem;
   margin: 0.6rem 0;
   color: ${({ theme }) => theme.colors.textPrimary};
+  word-break: break-all;
 `;
 
 const Icon = styled.span`
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
 `;
 
@@ -64,7 +65,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  background: transparent;
+  background: #111;
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0.75rem 1rem;
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -77,7 +78,7 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  background: transparent;
+  background: #111;
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 0.75rem 1rem;
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -188,11 +189,16 @@ export default function Contact() {
 
       <FormColumn ref={form} onSubmit={sendEmail}>
         <Label>Nome</Label>
-        <Input type="text" name="from_name" required />
+        <Input type="text" name="from_name" required placeholder="Seu nome" />
         <Label>E-mail</Label>
-        <Input type="email" name="from_email" required />
+        <Input
+          type="email"
+          name="from_email"
+          required
+          placeholder="Seu e-mail"
+        />
         <Label>Mensagem</Label>
-        <TextArea name="message" required />
+        <TextArea name="message" required placeholder="Sua mensagem" />
         <Button type="submit">Enviar mensagem</Button>
         {status && <p style={{ marginTop: "1rem", color: "#0f0" }}>{status}</p>}
       </FormColumn>
