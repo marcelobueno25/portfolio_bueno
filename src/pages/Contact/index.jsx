@@ -8,7 +8,24 @@ import ReCAPTCHA from "react-google-recaptcha";
 const RECAPTCHA_KEY = "6LewxlYrAAAAAOw1jUdKc0JdPum2qrEGR9keWMXr"; // vinda do site do Google
 
 const Section = styled(Container)`
-  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.5rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  margin: 0;
+`;
+
+const Grid = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,15 +37,8 @@ const Section = styled(Container)`
   }
 `;
 
-const Title = styled.h2`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.textPrimary};
-  margin-bottom: 2rem;
-`;
-
 const InfoColumn = styled.div`
   flex: 1;
-  // min-width: 300px;
   width: 100%;
 `;
 
@@ -52,7 +62,6 @@ const Icon = styled.span`
 
 const FormColumn = styled.form`
   flex: 1;
-  // min-width: 300px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -145,63 +154,70 @@ export default function Contact() {
   };
 
   return (
-    <Section id="contato">
-      <InfoColumn>
+    <Section>
+      <Header>
         <Title>Contato</Title>
+      </Header>
+      <Grid>
+        <InfoColumn>
+          <ContactGroup>
+            <strong>Entre em contato</strong>
+            <p
+              style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: "#888" }}
+            >
+              Me mande um e-mail, mensagem ou me chame nas redes sociais.
+            </p>
+          </ContactGroup>
 
-        <ContactGroup>
-          <strong>Entre em contato</strong>
-          <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: "#888" }}>
-            Me mande um e-mail, mensagem ou me chame nas redes sociais.
-          </p>
-        </ContactGroup>
+          <ContactGroup>
+            <ContactItem>
+              <Icon>
+                <FaEnvelope />
+              </Icon>
+              <span>marcelobueno_developer@outlook.com</span>
+            </ContactItem>
+            <ContactItem>
+              <Icon>
+                <FaWhatsapp />
+              </Icon>
+              <span>+55 (11) 94042-5798</span>
+            </ContactItem>
+            <ContactItem>
+              <Icon>
+                <FaMapMarkerAlt />
+              </Icon>
+              <span>Osasco - SP</span>
+            </ContactItem>
 
-        <ContactGroup>
-          <ContactItem>
-            <Icon>
-              <FaEnvelope />
-            </Icon>
-            <span>marcelobueno_developer@outlook.com</span>
-          </ContactItem>
-          <ContactItem>
-            <Icon>
-              <FaWhatsapp />
-            </Icon>
-            <span>+55 (11) 94042-5798</span>
-          </ContactItem>
-          <ContactItem>
-            <Icon>
-              <FaMapMarkerAlt />
-            </Icon>
-            <span>Osasco - SP</span>
-          </ContactItem>
+            <ContactItem>
+              <ReCAPTCHA
+                ref={captchaRef}
+                sitekey={RECAPTCHA_KEY}
+                theme="dark" // ou "light" se quiser claro
+                style={{ marginTop: "1rem" }}
+              />
+            </ContactItem>
+          </ContactGroup>
+        </InfoColumn>
 
-          <ContactItem>
-            <ReCAPTCHA
-              ref={captchaRef}
-              sitekey={RECAPTCHA_KEY}
-              theme="dark" // ou "light" se quiser claro
-              style={{ marginTop: "1rem" }}
-            />
-          </ContactItem>
-        </ContactGroup>
-      </InfoColumn>
-
-      <FormColumn ref={form} onSubmit={sendEmail}>
-        <Label>Nome</Label>
-        <Input type="text" name="from_name" required placeholder="Seu nome" />
-        <Label>E-mail</Label>
-        <Input
-          type="email"
-          name="from_email"
-          required
-          placeholder="Seu e-mail"
-        />
-        <Label>Mensagem</Label>
-        <TextArea name="message" required placeholder="Sua mensagem" />
-        <Button type="submit">Enviar mensagem</Button>
-        {status && <p style={{ marginTop: "1rem", color: "#0f0" }}>{status}</p>}
-      </FormColumn>
+        <FormColumn ref={form} onSubmit={sendEmail}>
+          <Label>Nome</Label>
+          <Input type="text" name="from_name" required placeholder="Seu nome" />
+          <Label>E-mail</Label>
+          <Input
+            type="email"
+            name="from_email"
+            required
+            placeholder="Seu e-mail"
+          />
+          <Label>Mensagem</Label>
+          <TextArea name="message" required placeholder="Sua mensagem" />
+          <Button type="submit">Enviar mensagem</Button>
+          {status && (
+            <p style={{ marginTop: "1rem", color: "#0f0" }}>{status}</p>
+          )}
+        </FormColumn>
+      </Grid>
     </Section>
   );
 }

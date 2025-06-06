@@ -20,7 +20,6 @@ import { SiSass, SiArduino } from "react-icons/si";
 const Section = styled(Container)`
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
 `;
 
 const Title = styled.h2`
@@ -78,6 +77,7 @@ const Button = styled.button`
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s ease;
+  min-width: 120px;
 
   &:hover {
     opacity: 0.9;

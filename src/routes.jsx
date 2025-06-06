@@ -4,6 +4,17 @@ import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 import Career from "@/pages/Career";
+import styled from "styled-components";
+import { ScrollingBanner } from "./components/ScrollingBanner";
+
+const RoutesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  section {
+    padding: 2rem 0;
+  }
+`;
 
 export default function AppRoutes() {
   return (
@@ -12,12 +23,15 @@ export default function AppRoutes() {
         <Route
           path="/"
           element={
-            <>
+            <RoutesContainer>
               <section id="home">
                 <Home />
               </section>
               <section id="sobre">
                 <About />
+              </section>
+              <section>
+                <ScrollingBanner />
               </section>
               <section id="carreira">
                 <Career />
@@ -28,7 +42,7 @@ export default function AppRoutes() {
               <section id="contato">
                 <Contact />
               </section>
-            </>
+            </RoutesContainer>
           }
         />
         <Route path="/sobre" element={<About />} />
