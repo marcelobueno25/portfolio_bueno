@@ -15,12 +15,7 @@ import {
   FaStream,
   FaProjectDiagram,
 } from "react-icons/fa";
-import {
-  SiStyledcomponents,
-  SiSass,
-  SiArduino,
-  SiChartdotjs,
-} from "react-icons/si";
+import { SiSass, SiArduino } from "react-icons/si";
 
 const Section = styled(Container)`
   display: flex;
@@ -115,14 +110,16 @@ export default function Projects() {
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/coffee-delivery.png",
+      link: "https://coffee-delivery-rho-two.vercel.app/",
     },
     {
-      title: "FeedHub (React)",
+      title: "FeedHub",
       description:
         "Rede social fictícia para treinar componentes, props, estado e CSS Modules.",
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/feedhub.png",
+      link: "https://feedhub-github.vercel.app/",
     },
     {
       title: "ToDo List",
@@ -131,6 +128,7 @@ export default function Projects() {
       date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/todo-list.png",
+      link: "https://todo-list-nine-taupe-30.vercel.app/",
     },
     {
       title: "Game - Número Secreto",
@@ -141,9 +139,10 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/numero-secreto.png",
+      link: "https://marcelobueno25.github.io/game.numero.secreto/",
     },
     {
-      title: "Pokédex (Angular)",
+      title: "Pokédex",
       description:
         "Aplicação com PokéAPI e RxJS para exibir dados dos Pokémon.",
       date: "jan de 2021",
@@ -155,6 +154,7 @@ export default function Projects() {
         { icon: FaHtml5, label: "HTML5" },
       ],
       image: "projects/pokedex.png",
+      link: "https://angular-pokedex-green.vercel.app/pokemon",
     },
     {
       title: "Police and Thief (Android)",
@@ -163,6 +163,7 @@ export default function Projects() {
       date: "fev de 2019 - jul de 2019",
       techs: [{ icon: FaUnity, label: "Unity" }],
       image: "projects/police-and-thief.jpeg",
+      link: "",
     },
     {
       title: "Base Apparel",
@@ -175,6 +176,7 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/frontend-mentor.jpg",
+      link: "https://marcelobueno25.github.io/baseapparel.github.io/",
     },
     {
       title: "Caminar",
@@ -186,6 +188,7 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/caminar.png",
+      link: "https://marcelobueno25.github.io/caminar.github.io/",
     },
     {
       title: "Caravan",
@@ -198,6 +201,7 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/caravan.png",
+      link: "https://marcelobueno25.github.io/caravan.github.io/",
     },
     {
       title: "Construtiva",
@@ -210,22 +214,25 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/construtiva.png",
+      link: "https://marcelobueno25.github.io/construtiva.github.io/",
     },
     {
-      title: "Sistema biométrico | Arduino",
+      title: "Sistema biométrico (Arduino)",
       description:
         "Projeto acadêmico de segurança com acesso biométrico e controle de agrotóxicos.",
       date: "jul de 2018 - nov de 2018",
       techs: [{ icon: SiArduino, label: "Arduino" }],
       image: "projects/sistema-biometrico.jpg",
+      link: "",
     },
     {
-      title: "App de Comunicação | Android",
+      title: "App de Comunicação (Android)",
       description:
         "App para medição da poluição e comunicação entre trabalhadores.",
       date: "fev de 2018 - jun de 2018",
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/android.jpeg",
+      link: "",
     },
     {
       title: "Sabil",
@@ -238,6 +245,7 @@ export default function Projects() {
         { icon: FaJs, label: "JavaScript" },
       ],
       image: "projects/sabil.png",
+      link: "https://marcelobueno25.github.io/sabil.github.io/",
     },
     {
       title: "Métodos de Ordenação",
@@ -246,6 +254,7 @@ export default function Projects() {
       date: "ago de 2017 - nov de 2017",
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/metodos-de-ordenacao.png",
+      link: "",
     },
     {
       title: "Jogo sobre Sustentabilidade",
@@ -254,6 +263,7 @@ export default function Projects() {
       date: "2017",
       techs: [{ icon: FaProjectDiagram, label: "Construct 2" }],
       image: "projects/android.jpeg",
+      link: "",
     },
   ];
 
