@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+import { useEffect, useState } from "react"; // já está importado useState
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import GradientText from "@/components/GradientText";
@@ -62,7 +62,7 @@ const Heading = styled(motion.h1)`
 `;
 
 const Highlight = styled.span`
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.white};
   font-family: "Playwrite NO", cursive;
   font-optical-sizing: auto;
   font-style: normal;
@@ -71,8 +71,13 @@ const Highlight = styled.span`
   display: inline-block;
   margin-top: 0.5rem;
 
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
   @media (max-width: 480px) {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+    display: block;
   }
 `;
 
@@ -85,13 +90,14 @@ const ProfileImage = styled.img`
   animation: ${gradientBorder} 18s linear infinite;
 
   @media (max-width: 768px) {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
   }
 
   @media (max-width: 480px) {
-    width: 160px;
-    height: 160px;
+    display: none;
+    width: 150px;
+    height: 150px;
   }
 `;
 
@@ -180,7 +186,100 @@ const DownloadButton = styled.a`
   }
 `;
 
+const ScrollIndicator = styled(motion.div)`
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+
+  .mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .mouse::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    border-radius: 4px;
+    animation: wheel 1.5s infinite;
+  }
+
+  @keyframes wheel {
+    0% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+
+  .arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    animation: blink 1.5s infinite;
+  }
+
+  .arrow:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .arrow:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(3px);
+    }
+    100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+  }
+`;
+
 export default function Home() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollIndicator(window.scrollY < 50); // esconde se rolou mais de 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <ContainerHome>
       <BackgroundEffect />
@@ -191,10 +290,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Olá, eu sou <Highlight>Marcelo Bueno</Highlight>,<br />
+          Olá, eu sou <Highlight>Marcelo Bueno,</Highlight>
           <GradientText>Desenvolvedor Front-End</GradientText>
           <br />
-          <SeniorBadge>Pleno \ Sênior</SeniorBadge>
+          <SeniorBadge>Pleno / Sênior</SeniorBadge>
         </Heading>
         <SocialLinks>
           <DownloadButton
@@ -228,6 +327,30 @@ export default function Home() {
           </IconCircle>
         </SocialLinks>
       </div>
+      {showScrollIndicator && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={
+            showScrollIndicator ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
+          transition={{ duration: 1, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            bottom: "2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <ScrollIndicator>
+            <div className="mouse" />
+            <div className="arrows">
+              <div className="arrow" />
+              <div className="arrow" />
+              <div className="arrow" />
+            </div>
+          </ScrollIndicator>
+        </motion.div>
+      )}
     </ContainerHome>
   );
 }
