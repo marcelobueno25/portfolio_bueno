@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"; // já está importado useState
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 import GradientText from "@/components/GradientText";
 import Container from "@/components/Container";
@@ -13,18 +13,11 @@ import {
   FaDownload,
 } from "react-icons/fa";
 import BackgroundEffect from "@/components/BackgroundEffect";
-
-const gradientBorder = keyframes`
-  0% {
-    border-color: #00ffe0;
-  }
-  50% {
-    border-color: #ff00ff;
-  }
-  100% {
-    border-color: #00ffe0;
-  }
-`;
+import ScrollIndicator from "@/components/ScrollIndicator";
+import ProfileImage from "@/components/ProfileImage";
+import { IconCircle, SocialLinks } from "@/components/SocialLinks";
+import SeniorBadge from "@/components/SeniorBadge";
+import DownloadButton from "@/components/DownloadButton";
 
 const ContainerHome = styled(Container)`
   height: 100vh;
@@ -85,194 +78,6 @@ const Highlight = styled.span`
   @media (max-width: 480px) {
     font-size: 1.5rem;
     display: block;
-  }
-`;
-
-const ProfileImage = styled.img`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid;
-  animation: ${gradientBorder} 18s linear infinite;
-
-  @media (max-width: 768px) {
-    width: 180px;
-    height: 180px;
-  }
-
-  @media (max-width: 480px) {
-    display: none;
-    width: 150px;
-    height: 150px;
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
-`;
-
-const IconCircle = styled.a`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 2px solid ${({ color }) => color};
-  color: ${({ color }) => color};
-  background: transparent;
-  transition: 0.3s;
-
-  &:hover {
-    background: ${({ color }) => color};
-    color: #0a0a0a;
-  }
-`;
-
-const SeniorBadge = styled.span`
-  background: linear-gradient(135deg, #00ffe0, #00ffe0);
-  color: #000;
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 0.3rem 2rem;
-  border-radius: 12px;
-  animation: pulse 2s infinite;
-
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(0, 255, 224, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 8px rgba(0, 255, 224, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(0, 255, 224, 0);
-    }
-  }
-`;
-
-const DownloadButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
-  border: 2px solid #fff;
-  background: transparent;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: background 0.3s, color 0.3s;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  &:hover {
-    background: #fff;
-    color: #0a0a0a;
-  }
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
-`;
-
-const ScrollIndicator = styled(motion.div)`
-  position: absolute;
-  bottom: 1.2rem; // ↓ ajustado de 2rem para 1.2rem
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-
-  .mouse {
-    width: 24px;
-    height: 40px;
-    border: 2px solid #fff;
-    border-radius: 12px;
-    position: relative;
-  }
-
-  .mouse::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 8px;
-    background: #fff;
-    border-radius: 4px;
-    animation: wheel 1.5s infinite;
-  }
-
-  @keyframes wheel {
-    0% {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-50%) translateY(10px);
-    }
-  }
-
-  .arrows {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    margin-top: 0.3rem;
-  }
-
-  .arrow {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
-    animation: blink 1.5s infinite;
-  }
-
-  .arrow:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .arrow:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes blink {
-    0% {
-      opacity: 0.3;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(3px);
-    }
-    100% {
-      opacity: 0.3;
-      transform: translateY(0);
-    }
   }
 `;
 
@@ -348,14 +153,7 @@ export default function Home() {
             transform: "translateX(-50%)",
           }}
         >
-          <ScrollIndicator>
-            <div className="mouse" />
-            <div className="arrows">
-              <div className="arrow" />
-              <div className="arrow" />
-              <div className="arrow" />
-            </div>
-          </ScrollIndicator>
+          <ScrollIndicator />
         </motion.div>
       )}
     </ContainerHome>
