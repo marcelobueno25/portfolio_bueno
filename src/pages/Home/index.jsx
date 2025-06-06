@@ -39,9 +39,16 @@ const ContainerHome = styled(Container)`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 2rem;
-    padding-top: 2rem;
+    gap: 1.2rem; /* diminui o espaçamento */
+    padding-top: 3rem;
+    padding-bottom: 6rem; /* adiciona mais espaço no fundo */
     text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding-top: 3.5rem;
+    padding-bottom: 6.5rem; /* ainda mais espaço para o indicador */
   }
 `;
 
@@ -188,7 +195,7 @@ const DownloadButton = styled.a`
 
 const ScrollIndicator = styled(motion.div)`
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.2rem; // ↓ ajustado de 2rem para 1.2rem
   left: 50%;
   transform: translateX(-50%);
   display: flex;
