@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 import { SiSass, SiArduino } from "react-icons/si";
 import { Title } from "@/components/Title";
+import ShowMoreButton from "@/components/ShowMoreButton";
 
 const Section = styled(Container)`
   display: flex;
@@ -66,23 +67,6 @@ const Metadata = styled.p`
   font-size: 0.8rem;
   color: ${({ theme }) => theme.colors.textSecondary};
   margin-top: 0.3rem;
-`;
-
-const Button = styled.button`
-  padding: 0.6rem 1.4rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  background: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.muted};
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  min-width: 120px;
-
-  &:hover {
-    opacity: 0.9;
-  }
 `;
 
 const Header = styled.div`
@@ -320,10 +304,8 @@ export default function Projects() {
     <Section>
       <Header>
         <Title>Projetos</Title>
-        <Button onClick={() => setShowAll(!showAll)}>
-          {showAll ? "Ver menos" : "Ver mais"}
-        </Button>
       </Header>
+
       <Grid>
         <AnimatePresence>
           {projetosVisiveis.map((projeto, index) => (
@@ -331,7 +313,6 @@ export default function Projects() {
               key={projeto.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               {projeto.image && (
@@ -371,6 +352,10 @@ export default function Projects() {
           ))}
         </AnimatePresence>
       </Grid>
+      <ShowMoreButton
+        isExpanded={showAll}
+        onClick={() => setShowAll(!showAll)}
+      />
     </Section>
   );
 }

@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa";
 import TechTags from "@/components/TechTags";
 import { Title } from "@/components/Title";
+import ShowMoreButton from "@/components/ShowMoreButton";
 
 const Section = styled(Container)`
   display: flex;
@@ -71,23 +72,6 @@ const Description = styled.p`
   font-size: 0.95rem;
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.5;
-`;
-
-const Button = styled.button`
-  background: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.muted};
-  border: none;
-  padding: 0.7rem 1.4rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  min-width: 120px;
-
-  &:hover {
-    opacity: 0.9;
-  }
 `;
 
 const Header = styled.div`
@@ -200,9 +184,6 @@ export default function Carreira() {
       <Title>
         <Header>
           <Title>Minha Carreira</Title>
-          <Button onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Ver menos" : "Ver mais"}
-          </Button>
         </Header>
       </Title>
       <Timeline>
@@ -224,6 +205,10 @@ export default function Carreira() {
           </Job>
         ))}
       </Timeline>
+      <ShowMoreButton
+        isExpanded={showAll}
+        onClick={() => setShowAll(!showAll)}
+      />
     </Section>
   );
 }
