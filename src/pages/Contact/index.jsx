@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Container from "@/components/Container";
 import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
@@ -115,6 +115,7 @@ export default function Contact() {
   const form = useRef();
   const captchaRef = useRef();
   const [status, setStatus] = useState("");
+  const theme = useTheme(); // <- acessa darkTheme ou lightTheme
 
   // 👇 Envia o formulário para o EmailJS
   const sendEmail = (e) => {
@@ -183,15 +184,6 @@ export default function Contact() {
               </Icon>
               <span>Osasco - SP</span>
             </ContactItem>
-
-            <ContactItem>
-              <ReCAPTCHA
-                ref={captchaRef}
-                sitekey={RECAPTCHA_KEY}
-                theme="dark" // ou "light" se quiser claro
-                style={{ marginTop: "1rem" }}
-              />
-            </ContactItem>
           </ContactGroup>
         </InfoColumn>
 
@@ -208,8 +200,15 @@ export default function Contact() {
           <Label>Mensagem</Label>
           <TextArea name="message" required placeholder="Sua mensagem" />
           <Button type="submit">Enviar mensagem</Button>
+          <ReCAPTCHA
+            key={theme.name}
+            ref={captchaRef}
+            sitekey={RECAPTCHA_KEY}
+            theme={theme.name === "dark" ? "dark" : "light"} // <- aqui troca
+            style={{ marginTop: "1rem" }}
+          />
           {status && (
-            <p style={{ marginTop: "1rem", color: "#0f0" }}>{status}</p>
+            <p style={{ marginTop: "1rem", color: "#777" }}>{status}</p>
           )}
         </FormColumn>
       </Grid>

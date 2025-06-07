@@ -1,6 +1,18 @@
 import GradientText from "@/components/GradientText";
 import React, { useEffect, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
+import {
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaNpm,
+  FaTerminal,
+  FaCode,
+} from "react-icons/fa";
 
 const NUM_COLUMNS = 6;
 const ANIMATION_DURATION = 1000;
@@ -20,23 +32,31 @@ const IntroWrapper = styled.div`
   pointer-events: none;
 `;
 
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
+
 const IntroText = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  color: white;
-  font-family: sans-serif;
+  color: ${({ theme }) => theme.colors.textPrimary};
   text-align: center;
   font-size: 3vw;
   font-weight: bold;
   opacity: ${({ hide }) => (hide ? 0 : 1)};
   transition: opacity 0.5s ease;
   font-family: "Playwrite NO", cursive;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 200;
+  animation: ${fadeInUp} 1.2s ease-out;
 `;
 
 const BackgroundBlock = styled.div`
@@ -51,7 +71,13 @@ const BackgroundBlock = styled.div`
 
 const Block = styled.div`
   flex: 1;
-  background-color: #0f0f0f;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* duas por linha */
+  grid-auto-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.background};
   ${({ animate, index }) =>
     animate &&
     css`
@@ -59,6 +85,37 @@ const Block = styled.div`
       animation-delay: ${index * 150}ms;
     `}
 `;
+
+const IconWrapper = styled.div`
+  font-size: 3rem;
+  opacity: 0.05;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+`;
+
+const icons = [
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaNpm,
+  FaTerminal,
+  FaCode,
+];
 
 export default function Intro() {
   const [startAnimation, setStartAnimation] = useState(false);
@@ -91,8 +148,17 @@ export default function Intro() {
         <GradientText fontSize="5rem">Portfolio</GradientText>
       </IntroText>
       <BackgroundBlock>
-        {Array.from({ length: NUM_COLUMNS }).map((_, index) => (
-          <Block key={index} index={index} animate={startAnimation} />
+        {Array.from({ length: NUM_COLUMNS }).map((_, colIndex) => (
+          <Block key={colIndex} index={colIndex} animate={startAnimation}>
+            {Array.from({ length: 40 }).map((_, i) => {
+              const Icon = icons[(colIndex * 40 + i) % icons.length];
+              return (
+                <IconWrapper key={i}>
+                  <Icon />
+                </IconWrapper>
+              );
+            })}
+          </Block>
         ))}
       </BackgroundBlock>
     </IntroWrapper>
