@@ -17,18 +17,13 @@ import {
   FaVuejs,
 } from "react-icons/fa";
 import TechTags from "@/components/TechTags";
+import { Title } from "@/components/Title";
 
 const Section = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-`;
-
-const Title = styled.h2`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.textPrimary};
-  margin: 0;
 `;
 
 const Timeline = styled.ul`

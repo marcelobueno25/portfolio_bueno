@@ -41,8 +41,9 @@ const ContainerHome = styled(Container)`
 
   @media (max-width: 480px) {
     gap: 1rem;
-    padding-top: 3.5rem;
+    padding-top: 6rem;
     padding-bottom: 6.5rem; /* ainda mais espaço para o indicador */
+    justify-content: start;
   }
 `;
 

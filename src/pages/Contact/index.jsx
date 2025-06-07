@@ -4,6 +4,7 @@ import { FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Title } from "@/components/Title";
 
 const RECAPTCHA_KEY = "6LewxlYrAAAAAOw1jUdKc0JdPum2qrEGR9keWMXr"; // vinda do site do Google
 
@@ -17,12 +18,6 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-`;
-
-const Title = styled.h2`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.textPrimary};
-  margin: 0;
 `;
 
 const Grid = styled.div`

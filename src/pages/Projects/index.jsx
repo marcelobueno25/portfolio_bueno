@@ -14,18 +14,15 @@ import {
   FaAngular,
   FaStream,
   FaProjectDiagram,
+  FaGlobe,
+  FaGithub,
 } from "react-icons/fa";
 import { SiSass, SiArduino } from "react-icons/si";
+import { Title } from "@/components/Title";
 
 const Section = styled(Container)`
   display: flex;
   flex-direction: column;
-`;
-
-const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-size: 2.5rem;
-  margin: 0;
 `;
 
 const Grid = styled.div`
@@ -41,9 +38,13 @@ const Card = styled(motion.div)`
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   padding: 1.5rem;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   transition: transform 0.3s ease;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.textPrimary};
 
   &:hover {
     transform: translateY(-5px);
@@ -51,7 +52,7 @@ const Card = styled(motion.div)`
 `;
 
 const ProjectTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.textPrimary};
   margin-bottom: 0.5rem;
 `;
 
@@ -99,6 +100,37 @@ const ProjectImage = styled.img`
   margin-bottom: 1rem;
 `;
 
+const CardFooter = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.2rem;
+  margin-top: auto;
+  padding-top: 1.2rem;
+`;
+
+const IconLink = styled.a`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+    transform: translateY(-1px);
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+`;
+
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
 
@@ -111,6 +143,7 @@ export default function Projects() {
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/coffee-delivery.png",
       link: "https://coffee-delivery-rho-two.vercel.app/",
+      github: "https://github.com/marcelobueno25/coffee.delivery",
     },
     {
       title: "FeedHub",
@@ -120,6 +153,7 @@ export default function Projects() {
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/feedhub.png",
       link: "https://feedhub-github.vercel.app/",
+      github: "https://github.com/marcelobueno25/feedhub.github",
     },
     {
       title: "ToDo List",
@@ -129,6 +163,7 @@ export default function Projects() {
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/todo-list.png",
       link: "https://todo-list-nine-taupe-30.vercel.app/",
+      github: "https://github.com/marcelobueno25/todo.list",
     },
     {
       title: "Game - Número Secreto",
@@ -140,6 +175,7 @@ export default function Projects() {
       ],
       image: "projects/numero-secreto.png",
       link: "https://marcelobueno25.github.io/game.numero.secreto/",
+      github: "https://github.com/marcelobueno25/game.numero.secreto",
     },
     {
       title: "Pokédex",
@@ -155,6 +191,7 @@ export default function Projects() {
       ],
       image: "projects/pokedex.png",
       link: "https://angular-pokedex-green.vercel.app/pokemon",
+      github: "https://github.com/marcelobueno25/pokemon.pokedex.angular",
     },
     {
       title: "Police and Thief (Android)",
@@ -164,6 +201,7 @@ export default function Projects() {
       techs: [{ icon: FaUnity, label: "Unity" }],
       image: "projects/police-and-thief.jpeg",
       link: "",
+      github: "",
     },
     {
       title: "Base Apparel",
@@ -177,6 +215,7 @@ export default function Projects() {
       ],
       image: "projects/frontend-mentor.jpg",
       link: "https://marcelobueno25.github.io/baseapparel.github.io/",
+      github: "https://github.com/marcelobueno25/baseapparel.github.io",
     },
     {
       title: "Caminar",
@@ -189,6 +228,7 @@ export default function Projects() {
       ],
       image: "projects/caminar.png",
       link: "https://marcelobueno25.github.io/caminar.github.io/",
+      github: "https://github.com/marcelobueno25/caminar.github.io",
     },
     {
       title: "Caravan",
@@ -202,6 +242,7 @@ export default function Projects() {
       ],
       image: "projects/caravan.png",
       link: "https://marcelobueno25.github.io/caravan.github.io/",
+      github: "https://github.com/marcelobueno25/caravan.github.io",
     },
     {
       title: "Construtiva",
@@ -215,6 +256,7 @@ export default function Projects() {
       ],
       image: "projects/construtiva.png",
       link: "https://marcelobueno25.github.io/construtiva.github.io/",
+      github: "https://github.com/marcelobueno25/construtiva.github.io",
     },
     {
       title: "Sistema biométrico (Arduino)",
@@ -224,6 +266,7 @@ export default function Projects() {
       techs: [{ icon: SiArduino, label: "Arduino" }],
       image: "projects/sistema-biometrico.jpg",
       link: "",
+      github: "",
     },
     {
       title: "App de Comunicação (Android)",
@@ -233,6 +276,7 @@ export default function Projects() {
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/android.jpeg",
       link: "",
+      github: "",
     },
     {
       title: "Sabil",
@@ -246,6 +290,7 @@ export default function Projects() {
       ],
       image: "projects/sabil.png",
       link: "https://marcelobueno25.github.io/sabil.github.io/",
+      github: "https://github.com/marcelobueno25/sabil.github.io",
     },
     {
       title: "Métodos de Ordenação",
@@ -255,6 +300,7 @@ export default function Projects() {
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/metodos-de-ordenacao.png",
       link: "",
+      github: "",
     },
     {
       title: "Jogo sobre Sustentabilidade",
@@ -264,6 +310,7 @@ export default function Projects() {
       techs: [{ icon: FaProjectDiagram, label: "Construct 2" }],
       image: "projects/android.jpeg",
       link: "",
+      github: "",
     },
   ];
 
@@ -290,10 +337,36 @@ export default function Projects() {
               {projeto.image && (
                 <ProjectImage src={projeto.image} alt={projeto.title} />
               )}
-              <ProjectTitle>{projeto.title}</ProjectTitle>
-              <Description>{projeto.description}</Description>
-              <Metadata>{projeto.date}</Metadata>
-              <TechTags items={projeto.techs} />
+
+              <div style={{ flex: 1 }}>
+                <ProjectTitle>{projeto.title}</ProjectTitle>
+                <Description>{projeto.description}</Description>
+                <Metadata>{projeto.date}</Metadata>
+                <TechTags items={projeto.techs} />
+              </div>
+
+              <CardFooter>
+                {projeto.link && (
+                  <IconLink
+                    href={projeto.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGlobe />
+                    <span>Site</span>
+                  </IconLink>
+                )}
+                {projeto.github && (
+                  <IconLink
+                    href={projeto.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGithub />
+                    <span>GitHub</span>
+                  </IconLink>
+                )}
+              </CardFooter>
             </Card>
           ))}
         </AnimatePresence>

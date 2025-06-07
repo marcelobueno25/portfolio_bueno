@@ -27,7 +27,7 @@ const DownloadButton = styled.a`
 
   &:hover {
     background: ${({ theme }) => theme.colors.textPrimary};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.muted};
   }
 `;
 

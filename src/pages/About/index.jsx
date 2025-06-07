@@ -2,18 +2,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
+import { Title } from "@/components/Title";
 
 const Section = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  margin-top: 0;
 `;
 
 const Paragraph = styled(motion.p)`
