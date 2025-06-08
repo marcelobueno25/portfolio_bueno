@@ -1,5 +1,6 @@
 import GradientText from "@/components/GradientText";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled, { keyframes, css } from "styled-components";
 import {
   FaReact,
@@ -121,6 +122,7 @@ export default function Intro() {
   const [startAnimation, setStartAnimation] = useState(false);
   const [hideText, setHideText] = useState(false);
   const [hideAll, setHideAll] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -143,9 +145,9 @@ export default function Intro() {
   return (
     <IntroWrapper>
       <IntroText hide={hideText}>
-        Bem vindo, ao meu
+        {t('welcome')}
         <br />
-        <GradientText fontSize="5rem">Portfolio</GradientText>
+        <GradientText fontSize="5rem">{t('portfolio')}</GradientText>
       </IntroText>
       <BackgroundBlock>
         {Array.from({ length: NUM_COLUMNS }).map((_, colIndex) => (

@@ -10,6 +10,7 @@ import {
   FaSun,
   FaTerminal,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -119,10 +120,21 @@ const ThemeToggle = styled.button`
   pointer-events: auto;
 `;
 
+const LanguageSelect = styled.select`
+  background: rgba(17, 21, 29, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.5rem;
+  pointer-events: auto;
+`;
+
 export default function Header({ isDarkMode, toggleTheme }) {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
   const lastScrollY = useRef(0);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     let ticking = false;
@@ -176,25 +188,33 @@ export default function Header({ isDarkMode, toggleTheme }) {
       <Nav isVisible={isVisible}>
         <NavLink href="#home" active={activeSection === "home"}>
           <FaHome />
-          <span>Início</span>
+          <span>{t('nav_home')}</span>
         </NavLink>
         <NavLink href="#sobre" active={activeSection === "sobre"}>
           <FaUser />
-          <span>Sobre</span>
+          <span>{t('nav_about')}</span>
         </NavLink>
         <NavLink href="#carreira" active={activeSection === "carreira"}>
           <FaBriefcase />
-          <span>Carreira</span>
+          <span>{t('nav_career')}</span>
         </NavLink>
         <NavLink href="#projetos" active={activeSection === "projetos"}>
           <FaProjectDiagram />
-          <span>Projetos</span>
+          <span>{t('nav_projects')}</span>
         </NavLink>
         <NavLink href="#contato" active={activeSection === "contato"}>
           <FaEnvelope />
-          <span>Contato</span>
+          <span>{t('nav_contact')}</span>
         </NavLink>
       </Nav>
+      <LanguageSelect
+        value={i18n.language}
+        onChange={(e) => i18n.changeLanguage(e.target.value)}
+      >
+        <option value="pt">PT</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </LanguageSelect>
       <ThemeToggle onClick={toggleTheme}>
         {isDarkMode ? <FaSun /> : <FaMoon />}
       </ThemeToggle>
