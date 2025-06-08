@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import { FaCommentDots, FaTimes } from "react-icons/fa";
 
@@ -48,6 +48,9 @@ const Messages = styled.div`
   flex: 1;
   padding: 0.75rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 const Message = styled.div`
@@ -59,7 +62,8 @@ const Message = styled.div`
   color: ${({ from, theme }) =>
     from === "user" ? theme.colors.black : theme.colors.textPrimary};
   padding: 0.4rem 0.6rem;
-  border-radius: 12px;
+  border-radius: ${({ from }) =>
+    from === "user" ? "12px 12px 0 12px" : "12px 12px 12px 0"};
 `;
 
 const Form = styled.form`
@@ -67,13 +71,15 @@ const Form = styled.form`
   border-top: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-const Input = styled.input`
+const Input = styled.textarea`
   flex: 1;
   padding: 0.6rem;
   background: transparent;
   color: ${({ theme }) => theme.colors.textPrimary};
   border: none;
   outline: none;
+  resize: none;
+  overflow-y: auto;
 `;
 
 const SendButton = styled.button`
@@ -89,9 +95,18 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const inputRef = useRef(null);
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
   const toggleOpen = () => setOpen((prev) => !prev);
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,6 +114,9 @@ export default function ChatWidget() {
     const userText = input.trim();
     setMessages((prev) => [...prev, { from: "user", text: userText }]);
     setInput("");
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+    }
     setLoading(true);
     setMessages((prev) => [...prev, { from: "bot", text: "pensando..." }]);
     try {
@@ -145,9 +163,11 @@ export default function ChatWidget() {
           </Messages>
           <Form onSubmit={handleSubmit}>
             <Input
+              ref={inputRef}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={handleInputChange}
               placeholder="Digite sua mensagem"
+              rows={1}
             />
             <SendButton type="submit">Enviar</SendButton>
           </Form>
