@@ -1,21 +1,19 @@
-import { Configuration, OpenAIApi } from 'openai';
-import 'dotenv/config';
+import OpenAI from "openai";
+import "dotenv/config";
 
-const openai = new OpenAIApi(
-  new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-);
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function getChatReply(message, systemPrompt) {
   const messages = [
-    { role: 'system', content: systemPrompt },
-    { role: 'user', content: message }
+    { role: "system", content: systemPrompt },
+    { role: "user", content: message },
   ];
 
-  const completion = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+  const completion = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
     messages,
-    temperature: 0.2
+    temperature: 0.2,
   });
 
-  return completion.data.choices[0].message.content;
+  return completion.choices[0].message.content;
 }
