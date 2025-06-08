@@ -4,6 +4,7 @@ import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 import Career from "@/pages/Career";
+import Chat from "@/pages/Chat";
 import styled from "styled-components";
 import { ScrollingBanner } from "./components/ScrollingBanner";
 
@@ -48,6 +49,7 @@ export default function AppRoutes() {
         <Route path="/sobre" element={<About />} />
         <Route path="/projetos" element={<Projects />} />
         <Route path="/contato" element={<Contact />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );
