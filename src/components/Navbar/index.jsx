@@ -125,8 +125,7 @@ const LanguageSelect = styled.select`
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
-  padding: 0.4rem 0.6rem;
-  margin-right: 0.5rem;
+  padding: 0.8rem 0.6rem;
   pointer-events: auto;
 `;
 
@@ -188,23 +187,23 @@ export default function Header({ isDarkMode, toggleTheme }) {
       <Nav isVisible={isVisible}>
         <NavLink href="#home" active={activeSection === "home"}>
           <FaHome />
-          <span>{t('nav_home')}</span>
+          <span>{t("nav_home")}</span>
         </NavLink>
         <NavLink href="#sobre" active={activeSection === "sobre"}>
           <FaUser />
-          <span>{t('nav_about')}</span>
+          <span>{t("nav_about")}</span>
         </NavLink>
         <NavLink href="#carreira" active={activeSection === "carreira"}>
           <FaBriefcase />
-          <span>{t('nav_career')}</span>
+          <span>{t("nav_career")}</span>
         </NavLink>
         <NavLink href="#projetos" active={activeSection === "projetos"}>
           <FaProjectDiagram />
-          <span>{t('nav_projects')}</span>
+          <span>{t("nav_projects")}</span>
         </NavLink>
         <NavLink href="#contato" active={activeSection === "contato"}>
           <FaEnvelope />
-          <span>{t('nav_contact')}</span>
+          <span>{t("nav_contact")}</span>
         </NavLink>
       </Nav>
       <LanguageSelect

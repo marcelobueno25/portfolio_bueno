@@ -52,12 +52,20 @@ const IntroText = styled.div`
   z-index: 2;
   color: ${({ theme }) => theme.colors.textPrimary};
   text-align: center;
-  font-size: 3vw;
+  font-size: 1.5rem;
   font-weight: bold;
   opacity: ${({ hide }) => (hide ? 0 : 1)};
   transition: opacity 0.5s ease;
   font-family: "Playwrite NO", cursive;
   animation: ${fadeInUp} 1.2s ease-out;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const BackgroundBlock = styled.div`
@@ -145,9 +153,9 @@ export default function Intro() {
   return (
     <IntroWrapper>
       <IntroText hide={hideText}>
-        {t('welcome')}
+        {t("welcome")}
         <br />
-        <GradientText fontSize="5rem">{t('portfolio')}</GradientText>
+        <GradientText fontSize="5rem">{t("portfolio")}</GradientText>
       </IntroText>
       <BackgroundBlock>
         {Array.from({ length: NUM_COLUMNS }).map((_, colIndex) => (

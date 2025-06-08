@@ -86,98 +86,41 @@ export default function Carreira() {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
-  const experiencias = [
-    {
-      title: "Analista de Desenvolvimento",
-      company: "Marketdata · Mar 2021 - Atual",
-      description: [
-        "✓ Desenvolvimento de interfaces em React, utilizando a biblioteca Ant Design (antd) para construção de componentes reutilizáveis e responsivos;",
-        "✓ Criação e manutenção de layouts de telas completas, alinhadas com as demandas de negócio;",
-        "✓ Comunicação direta com o cliente para entendimento de requisitos, levantamento de novas funcionalidades e ajustes em features existentes;",
-        "✓ Integração com back-end (API e banco de dados), em conjunto com o desenvolvedor responsável pela camada de dados;",
-        "✓ Utilização do GitLab para versionamento de código e processos de merge/review;",
-        "✓ Planejamento e acompanhamento de tarefas via Jira, seguindo a metodologia ágil Scrum;",
-        "✓ Desenho de fluxos e protótipos utilizando o Miro, facilitando a comunicação entre o time e o cliente;",
-        "✓ Participação ativa em daily meetings, plannings e reviews com foco em entregas contínuas e melhoria do produto.",
-      ],
-      techs: [
-        { icon: FaGitlab, label: "GitLab" },
-        { icon: FaReact, label: "React" },
-        { icon: FaNodeJs, label: "Node.js" },
-        { icon: FaAngular, label: "Angular" },
-        { icon: FaMicrosoft, label: ".NET" },
-        { icon: FaHtml5, label: "HTML5" },
-        { icon: FaCss3Alt, label: "CSS3" },
-        { icon: FaJs, label: "JavaScript" },
-        { icon: FaFlask, label: "Jest" },
-      ],
-    },
-    {
-      title: "Desenvolvedor Front-End",
-      company: "Telefônica Educação Digital · Dez 2019 - Mar 2021",
-      description: [
-        "✓ Desenvolvimento de Jogos Educacionais para a web.",
-        "✓ Criação de Landing Pages utilizando HTML5, CSS3 e JavaScript.",
-        "✓ Treinamento de novos membros da equipe.",
-        "✓ Facilitação de sessões de brainstorming e alinhamento estratégico para aprimorar recursos online.",
-        "✓ Fechamento de pacotes SCORM 1.2.",
-      ],
-      techs: [
-        { icon: FaGitlab, label: "GitLab" },
-        { icon: FaHtml5, label: "HTML5" },
-        { icon: FaCss3Alt, label: "CSS3" },
-        { icon: FaJs, label: "JavaScript" },
-        { icon: FaUnity, label: "Unity" },
-      ],
-    },
-    {
-      title: "Desenvolvedor Front-End",
-      company: "MJV Technology & Innovation · Out 2018 - Nov 2019",
-      description: [
-        "✓ Designado para atuar no Bradesco Seguros.",
-        "✓ Responsável pelo desenvolvimento de Landing Pages utilizando tecnologias como HTML, Nunjucks, Gulp, CSS, SASS, Bootstrap, JavaScript (ES6), jQuery, além da gestão de dependências com NPM e Yarn, e o uso de sistemas de controle de versão como Git e Gitlab.",
-        "✓ Forneci suporte em CSS, HTML, JavaScript e Design para a plataforma Sharepoint 2013.",
-        "✓ Realizei tarefas de recorte e edição de imagens utilizando ferramentas como o Adobe Photoshop e Gimp.",
-        "✓ Garanti a compatibilidade com diferentes navegadores e implementei soluções de fallback para o Internet Explorer.",
-      ],
-      techs: [
-        { icon: FaGitlab, label: "GitLab" },
-        { icon: FaHtml5, label: "HTML5" },
-        { icon: FaCss3Alt, label: "CSS3" },
-        { icon: FaJs, label: "JavaScript" },
-        { icon: FaVuejs, label: "Vue.js" },
-        { icon: FaLess, label: "Less" },
-        { icon: FaSass, label: "Sass" },
-      ],
-    },
-    {
-      title: "Suporte Técnico",
-      company: "Cappta · Jun 2018 - Out 2018",
-      description: [
-        "✓ Realização de análise de erros e esclarecimento de dúvidas;",
-        "✓ Execução de procedimentos técnicos via acesso remoto;",
-        "✓ Acompanhamento e monitoramento de chamados da área;",
-        "✓ Contribuição para o tratamento de backlog.",
-      ],
-    },
-    {
-      title: "Estagiário em Suporte Técnico",
-      company: "CEAGESP · Set 2017 - Mai 2018",
-      description: [
-        "✓ Prestação de suporte ao usuário, oferecendo esclarecimentos e soluções para questões técnicas.",
-        "✓ Realização de instalações, configurações e manutenções de hardware e software.",
-        "✓ Resolução de desafios relacionados à conectividade na rede de computadores da empresa.",
-        "✓ Colaboração com técnicos e analistas em tarefas relacionadas à infraestrutura de tecnologia da informação.",
-      ],
-    },
-    {
-      title: "Backoffice",
-      company: "CSU CardSystem · Mar 2015 - Fev 2017",
-      description: [
-        "Encarregado de prestar um atendimento de alta qualidade, assegurando que todas as solicitações dos clientes sejam tratadas de maneira adequada. Isso inclui a resolução de problemas e reclamações de alta importância, além de oferecer suporte ao site Natura.",
-      ],
-    },
+  const techLists = [
+    [
+      { icon: FaGitlab, label: "GitLab" },
+      { icon: FaReact, label: "React" },
+      { icon: FaNodeJs, label: "Node.js" },
+      { icon: FaAngular, label: "Angular" },
+      { icon: FaMicrosoft, label: ".NET" },
+      { icon: FaHtml5, label: "HTML5" },
+      { icon: FaCss3Alt, label: "CSS3" },
+      { icon: FaJs, label: "JavaScript" },
+      { icon: FaFlask, label: "Jest" },
+    ],
+    [
+      { icon: FaGitlab, label: "GitLab" },
+      { icon: FaHtml5, label: "HTML5" },
+      { icon: FaCss3Alt, label: "CSS3" },
+      { icon: FaJs, label: "JavaScript" },
+      { icon: FaUnity, label: "Unity" },
+    ],
+    [
+      { icon: FaGitlab, label: "GitLab" },
+      { icon: FaHtml5, label: "HTML5" },
+      { icon: FaCss3Alt, label: "CSS3" },
+      { icon: FaJs, label: "JavaScript" },
+      { icon: FaVuejs, label: "Vue.js" },
+      { icon: FaLess, label: "Less" },
+      { icon: FaSass, label: "Sass" },
+    ],
   ];
+
+  const textExperiences = t("career_experiences", { returnObjects: true });
+  const experiencias = textExperiences.map((exp, idx) => ({
+    ...exp,
+    techs: techLists[idx],
+  }));
 
   const visiveis = showAll ? experiencias : experiencias.slice(0, 3);
 
@@ -185,7 +128,7 @@ export default function Carreira() {
     <Section id="carreira">
       <Title>
         <Header>
-          <Title>{t('career_title')}</Title>
+          <Title>{t("career_title")}</Title>
         </Header>
       </Title>
       <Timeline>

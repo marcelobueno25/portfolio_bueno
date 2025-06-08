@@ -120,41 +120,26 @@ export default function Projects() {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
-  const projetos = [
+  const meta = [
     {
-      title: "Coffe Delivery",
-      description:
-        "Aplicação de e-commerce fictícia para venda de cafés especiais com carrinho e formulário de entrega.",
-      date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/coffee-delivery.png",
       link: "https://coffee-delivery-rho-two.vercel.app/",
       github: "https://github.com/marcelobueno25/coffee.delivery",
     },
     {
-      title: "FeedHub",
-      description:
-        "Rede social fictícia para treinar componentes, props, estado e CSS Modules.",
-      date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/feedhub.png",
       link: "https://feedhub-github.vercel.app/",
       github: "https://github.com/marcelobueno25/feedhub.github",
     },
     {
-      title: "ToDo List",
-      description:
-        "Lista de tarefas para adicionar, concluir e remover atividades.",
-      date: "jan de 2023",
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/todo-list.png",
       link: "https://todo-list-nine-taupe-30.vercel.app/",
       github: "https://github.com/marcelobueno25/todo.list",
     },
     {
-      title: "Game - Número Secreto",
-      description: "Jogo simples para adivinhar número secreto.",
-      date: "jan de 2022",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaJs, label: "JavaScript" },
@@ -164,10 +149,6 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/game.numero.secreto",
     },
     {
-      title: "Pokédex",
-      description:
-        "Aplicação com PokéAPI e RxJS para exibir dados dos Pokémon.",
-      date: "jan de 2021",
       techs: [
         { icon: FaAngular, label: "Angular" },
         { icon: FaStream, label: "RxJS" },
@@ -180,20 +161,12 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/pokemon.pokedex.angular",
     },
     {
-      title: "Police and Thief (Android)",
-      description:
-        "Jogo retrô baseado em Keystone Kapers. Desenvolvido em Unity com C#.",
-      date: "fev de 2019 - jul de 2019",
       techs: [{ icon: FaUnity, label: "Unity" }],
       image: "projects/police-and-thief.jpeg",
       link: "",
       github: "",
     },
     {
-      title: "Base Apparel",
-      description:
-        "Landing page 'coming soon' com validação de formulário e layout responsivo.",
-      date: "jan de 2019",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaCss3Alt, label: "CSS3" },
@@ -204,9 +177,6 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/baseapparel.github.io",
     },
     {
-      title: "Caminar",
-      description: "Landing page minimalista ideal para projetos criativos.",
-      date: "jan de 2019",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaCss3Alt, label: "CSS3" },
@@ -217,10 +187,6 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/caminar.github.io",
     },
     {
-      title: "Caravan",
-      description:
-        "Página para agências de turismo com layout moderno e seções modulares.",
-      date: "jan de 2019",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaCss3Alt, label: "CSS3" },
@@ -231,10 +197,6 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/caravan.github.io",
     },
     {
-      title: "Construtiva",
-      description:
-        "Landing page para construção civil com foco em clareza e apresentação profissional.",
-      date: "jan de 2019",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaCss3Alt, label: "CSS3" },
@@ -245,30 +207,18 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/construtiva.github.io",
     },
     {
-      title: "Sistema biométrico (Arduino)",
-      description:
-        "Projeto acadêmico de segurança com acesso biométrico e controle de agrotóxicos.",
-      date: "jul de 2018 - nov de 2018",
       techs: [{ icon: SiArduino, label: "Arduino" }],
       image: "projects/sistema-biometrico.jpg",
       link: "",
       github: "",
     },
     {
-      title: "App de Comunicação (Android)",
-      description:
-        "App para medição da poluição e comunicação entre trabalhadores.",
-      date: "fev de 2018 - jun de 2018",
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/android.jpeg",
       link: "",
       github: "",
     },
     {
-      title: "Sabil",
-      description:
-        "Landing page moderna e responsiva para startups e produtos digitais.",
-      date: "jan de 2018",
       techs: [
         { icon: FaHtml5, label: "HTML5" },
         { icon: FaCss3Alt, label: "CSS3" },
@@ -279,26 +229,24 @@ export default function Projects() {
       github: "https://github.com/marcelobueno25/sabil.github.io",
     },
     {
-      title: "Métodos de Ordenação",
-      description:
-        "Software acadêmico para comparar performance de algoritmos de ordenação.",
-      date: "ago de 2017 - nov de 2017",
       techs: [{ icon: FaJava, label: "Java" }],
       image: "projects/metodos-de-ordenacao.png",
       link: "",
       github: "",
     },
     {
-      title: "Jogo sobre Sustentabilidade",
-      description:
-        "Jogo educativo para separar resíduos recicláveis, feito em Construct 2.",
-      date: "2017",
       techs: [{ icon: FaProjectDiagram, label: "Construct 2" }],
       image: "projects/android.jpeg",
       link: "",
       github: "",
     },
   ];
+
+  const textProjects = t("projects_list", { returnObjects: true });
+  const projetos = textProjects.map((p, idx) => ({
+    ...p,
+    ...meta[idx],
+  }));
 
   const projetosVisiveis = showAll ? projetos : projetos.slice(0, 6);
 
