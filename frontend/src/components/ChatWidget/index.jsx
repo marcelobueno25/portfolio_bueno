@@ -96,7 +96,10 @@ export default function ChatWidget() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_API_URL
+      : "https://portfolio-backend-nu-brown.vercel.app";
 
   const toggleOpen = () => setOpen((prev) => !prev);
 
@@ -120,7 +123,7 @@ export default function ChatWidget() {
     setLoading(true);
     setMessages((prev) => [...prev, { from: "bot", text: "pensando..." }]);
     try {
-      const res = await fetch(`${API_URL}/api/chat`, {
+      const res = await fetch(`${API_URL}/api/chat.js`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
