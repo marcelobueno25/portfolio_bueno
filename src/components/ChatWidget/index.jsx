@@ -131,7 +131,7 @@ export default function ChatWidget() {
         ...prev.slice(0, -1),
         { from: "bot", text: data.reply },
       ]);
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev.slice(0, -1),
         { from: "bot", text: "Erro ao obter resposta." },
