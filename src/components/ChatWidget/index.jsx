@@ -89,6 +89,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
   const toggleOpen = () => setOpen((prev) => !prev);
 
@@ -101,11 +102,12 @@ export default function ChatWidget() {
     setLoading(true);
     setMessages((prev) => [...prev, { from: "bot", text: "pensando..." }]);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
       });
+      if (!res.ok) throw new Error("bad response");
       const data = await res.json();
       setMessages((prev) => [
         ...prev.slice(0, -1),
@@ -127,7 +129,10 @@ export default function ChatWidget() {
         <ChatContainer>
           <ChatHeader>
             <span>Chat</span>
-            <button onClick={toggleOpen} style={{ background: "none", border: "none", cursor: "pointer" }}>
+            <button
+              onClick={toggleOpen}
+              style={{ background: "none", border: "none", cursor: "pointer" }}
+            >
               <FaTimes />
             </button>
           </ChatHeader>
