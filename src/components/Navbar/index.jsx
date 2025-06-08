@@ -44,6 +44,10 @@ const Nav = styled.nav`
   display: flex;
   gap: 0.5rem;
   pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
+
+  @media (max-width: 480px) {
+    gap: 0.2rem;
+  }
 `;
 
 const NavLink = styled.a`
@@ -125,7 +129,7 @@ const LanguageSelect = styled.select`
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
-  padding: 0.8rem 0.6rem;
+  padding: 0.7rem 0.6rem;
   pointer-events: auto;
 `;
 
