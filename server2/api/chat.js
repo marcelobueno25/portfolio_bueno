@@ -28,8 +28,7 @@ export default async function handler(req, res) {
       ],
     });
 
-    const reply = completion.choices[0].message.content;
-    res.status(200).json({ reply });
+    res.status(200).json({ reply: completion.choices[0].message.content });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Erro ao chamar a OpenAI" });
