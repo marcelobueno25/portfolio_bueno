@@ -4,6 +4,8 @@ import { GlobalStyle } from "./styles/GlobalStyle.js";
 import { darkTheme, lightTheme } from "./styles/theme.js";
 import { ThemeProvider } from "styled-components";
 import App from "./App.jsx";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n.js";
 
 function ThemedApp() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -20,6 +22,8 @@ function ThemedApp() {
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemedApp />
+    <I18nextProvider i18n={i18n}>
+      <ThemedApp />
+    </I18nextProvider>
   </StrictMode>
 );

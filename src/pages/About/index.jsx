@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import { Title } from "@/components/Title";
+import { useTranslation } from "react-i18next";
 
 const Section = styled(Container)`
   display: flex;
@@ -17,10 +18,11 @@ const Paragraph = styled(motion.p)`
 `;
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <>
       <Section>
-        <Title>Sobre mim</Title>
+        <Title>{t('about_title')}</Title>
         <Paragraph
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

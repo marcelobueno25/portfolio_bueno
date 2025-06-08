@@ -20,6 +20,7 @@ import {
 import { SiSass, SiArduino } from "react-icons/si";
 import { Title } from "@/components/Title";
 import ShowMoreButton from "@/components/ShowMoreButton";
+import { useTranslation } from "react-i18next";
 
 const Section = styled(Container)`
   display: flex;
@@ -116,6 +117,7 @@ const IconLink = styled.a`
 `;
 
 export default function Projects() {
+  const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
   const projetos = [
@@ -303,7 +305,7 @@ export default function Projects() {
   return (
     <Section>
       <Header>
-        <Title>Projetos</Title>
+        <Title>{t('projects_title')}</Title>
       </Header>
 
       <Grid>

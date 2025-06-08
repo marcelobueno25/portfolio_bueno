@@ -18,6 +18,7 @@ import ProfileImage from "@/components/ProfileImage";
 import { IconCircle, SocialLinks } from "@/components/SocialLinks";
 import SeniorBadge from "@/components/SeniorBadge";
 import DownloadButton from "@/components/DownloadButton";
+import { useTranslation } from "react-i18next";
 
 const ContainerHome = styled(Container)`
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -85,6 +86,7 @@ const Highlight = styled.span`
 
 export default function Home() {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -104,7 +106,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Olá, eu sou <Highlight>Marcelo Bueno,</Highlight>
+          {t('home_intro', { name: 'Marcelo Bueno' })}
           <GradientText>Desenvolvedor Front-End</GradientText>
           <br />
           <SeniorBadge>Pleno / Sênior</SeniorBadge>
@@ -115,7 +117,7 @@ export default function Home() {
             download="Marcelo-Bueno-CV.pdf"
           >
             <FaDownload style={{ marginRight: "0.5rem" }} />
-            Download CV
+            {t('download_cv')}
           </DownloadButton>
 
           <IconCircle href="https://github.com/marcelobueno25" color="#fff">

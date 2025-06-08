@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa";
 import TechTags from "@/components/TechTags";
 import { Title } from "@/components/Title";
+import { useTranslation } from "react-i18next";
 import ShowMoreButton from "@/components/ShowMoreButton";
 
 const Section = styled(Container)`
@@ -82,6 +83,7 @@ const Header = styled.div`
 `;
 
 export default function Carreira() {
+  const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
   const experiencias = [
@@ -183,7 +185,7 @@ export default function Carreira() {
     <Section id="carreira">
       <Title>
         <Header>
-          <Title>Minha Carreira</Title>
+          <Title>{t('career_title')}</Title>
         </Header>
       </Title>
       <Timeline>

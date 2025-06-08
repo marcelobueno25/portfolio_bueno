@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const Wrapper = styled.div`
   margin-top: 3rem;
@@ -29,11 +30,12 @@ const LinkText = styled.span`
 `;
 
 export default function ShowMoreLink({ isExpanded, onClick }) {
+  const { t } = useTranslation();
   return (
     <Wrapper>
       <Line />
       <LinkText onClick={onClick}>
-        {isExpanded ? "Ver menos" : "Ver mais"}
+        {isExpanded ? t('show_less') : t('show_more')}
       </LinkText>
       <Line />
     </Wrapper>

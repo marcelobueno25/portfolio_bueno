@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Title } from "@/components/Title";
+import { useTranslation } from "react-i18next";
 
 const RECAPTCHA_KEY = "6LewxlYrAAAAAOw1jUdKc0JdPum2qrEGR9keWMXr"; // vinda do site do Google
 
@@ -116,6 +117,7 @@ export default function Contact() {
   const captchaRef = useRef();
   const [status, setStatus] = useState("");
   const theme = useTheme(); // <- acessa darkTheme ou lightTheme
+  const { t } = useTranslation();
 
   // 👇 Envia o formulário para o EmailJS
   const sendEmail = (e) => {
@@ -152,7 +154,7 @@ export default function Contact() {
   return (
     <Section>
       <Header>
-        <Title>Contato</Title>
+        <Title>{t('contact_title')}</Title>
       </Header>
       <Grid>
         <InfoColumn>
@@ -188,18 +190,18 @@ export default function Contact() {
         </InfoColumn>
 
         <FormColumn ref={form} onSubmit={sendEmail}>
-          <Label>Nome</Label>
-          <Input type="text" name="from_name" required placeholder="Seu nome" />
+          <Label>{t('name')}</Label>
+          <Input type="text" name="from_name" required placeholder={t('your_name')} />
           <Label>E-mail</Label>
           <Input
             type="email"
             name="from_email"
             required
-            placeholder="Seu e-mail"
+            placeholder={t('your_email')}
           />
-          <Label>Mensagem</Label>
-          <TextArea name="message" required placeholder="Sua mensagem" />
-          <Button type="submit">Enviar mensagem</Button>
+          <Label>{t('message')}</Label>
+          <TextArea name="message" required placeholder={t('your_message')} />
+          <Button type="submit">{t('send_message')}</Button>
           <ReCAPTCHA
             key={theme.name}
             ref={captchaRef}
