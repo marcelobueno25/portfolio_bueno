@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import {
   FaHome,
@@ -122,7 +122,7 @@ const ThemeToggle = styled.button`
 export default function Header({ isDarkMode, toggleTheme }) {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     let ticking = false;
@@ -149,23 +149,23 @@ export default function Header({ isDarkMode, toggleTheme }) {
         return false;
       });
 
-      if (active && active !== activeSection) {
-        setActiveSection(active);
+      if (active) {
+        setActiveSection((prev) => (active !== prev ? active : prev));
       }
     };
 
     const updateHeaderVisibility = () => {
       const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY;
+      const scrollingDown = currentScrollY > lastScrollY.current;
       const shouldShow = !scrollingDown || currentScrollY < 100;
 
       setIsVisible(shouldShow);
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, activeSection]);
+  }, []);
 
   return (
     <HeaderWrapper isVisible={isVisible}>
