@@ -99,17 +99,17 @@ export default function Home() {
   return (
     <ContainerHome>
       <BackgroundEffect />
-      <ProfileImage src={MinhaFoto} alt="Minha foto" />
+      <ProfileImage src={MinhaFoto} alt={t("alt_photo")} />
       <div>
         <Heading
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {t('home_intro', { name: 'Marcelo Bueno' })}
-          <GradientText>Desenvolvedor Front-End</GradientText>
+          {t("home_intro", { name: "Marcelo Bueno" })}
+          <GradientText>{t("dev_role")}</GradientText>
           <br />
-          <SeniorBadge>Pleno / Sênior</SeniorBadge>
+          <SeniorBadge>{t("level_senior")}</SeniorBadge>
         </Heading>
         <SocialLinks>
           <DownloadButton
@@ -117,7 +117,7 @@ export default function Home() {
             download="Marcelo-Bueno-CV.pdf"
           >
             <FaDownload style={{ marginRight: "0.5rem" }} />
-            {t('download_cv')}
+            {t("download_cv")}
           </DownloadButton>
 
           <IconCircle href="https://github.com/marcelobueno25" color="#fff">

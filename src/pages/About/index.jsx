@@ -22,23 +22,14 @@ export default function About() {
   return (
     <>
       <Section>
-        <Title>{t('about_title')}</Title>
+        <Title>{t("about_title")}</Title>
         <Paragraph
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Olá! Meu nome é Marcelo Bueno, sou desenvolvedor front-end com foco em
-          criar experiências digitais visuais, intuitivas e modernas. Acredito
-          que design e código caminham juntos para entregar soluções que
-          encantam pessoas e resolvem problemas reais.
-          <br />
-          <br />
-          Tenho experiência com React, styled-components, animações com Framer
-          Motion e boas práticas de UI/UX. Estou sempre buscando evoluir como
-          profissional e como pessoa — seja criando novos projetos, estudando
-          tendências ou trocando ideias com a comunidade.
+          {t("about_text")}
         </Paragraph>
       </Section>
     </>

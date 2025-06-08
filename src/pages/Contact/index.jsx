@@ -127,7 +127,7 @@ export default function Contact() {
     const token = captchaRef.current.getValue();
 
     if (!token) {
-      setStatus("❗ Por favor, confirme que você não é um robô.");
+      setStatus(t("captcha_required"));
       return;
     }
 
@@ -141,12 +141,12 @@ export default function Contact() {
       )
       .then(
         () => {
-          setStatus("✅ Mensagem enviada com sucesso!");
+          setStatus(t("msg_success"));
           form.current.reset();
           captchaRef.current.reset(); // limpa o reCAPTCHA
         },
         () => {
-          setStatus("❌ Ocorreu um erro. Tente novamente.");
+          setStatus(t("msg_error"));
         }
       );
   };
@@ -154,16 +154,16 @@ export default function Contact() {
   return (
     <Section>
       <Header>
-        <Title>{t('contact_title')}</Title>
+        <Title>{t("contact_title")}</Title>
       </Header>
       <Grid>
         <InfoColumn>
           <ContactGroup>
-            <strong>Entre em contato</strong>
+            <strong>{t("contact_heading")}</strong>
             <p
               style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: "#888" }}
             >
-              Me mande um e-mail, mensagem ou me chame nas redes sociais.
+              {t("contact_intro")}
             </p>
           </ContactGroup>
 
@@ -190,18 +190,23 @@ export default function Contact() {
         </InfoColumn>
 
         <FormColumn ref={form} onSubmit={sendEmail}>
-          <Label>{t('name')}</Label>
-          <Input type="text" name="from_name" required placeholder={t('your_name')} />
+          <Label>{t("name")}</Label>
+          <Input
+            type="text"
+            name="from_name"
+            required
+            placeholder={t("your_name")}
+          />
           <Label>E-mail</Label>
           <Input
             type="email"
             name="from_email"
             required
-            placeholder={t('your_email')}
+            placeholder={t("your_email")}
           />
-          <Label>{t('message')}</Label>
-          <TextArea name="message" required placeholder={t('your_message')} />
-          <Button type="submit">{t('send_message')}</Button>
+          <Label>{t("message")}</Label>
+          <TextArea name="message" required placeholder={t("your_message")} />
+          <Button type="submit">{t("send_message")}</Button>
           <ReCAPTCHA
             key={theme.name}
             ref={captchaRef}

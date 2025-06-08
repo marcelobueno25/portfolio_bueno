@@ -305,7 +305,7 @@ export default function Projects() {
   return (
     <Section>
       <Header>
-        <Title>{t('projects_title')}</Title>
+        <Title>{t("projects_title")}</Title>
       </Header>
 
       <Grid>
@@ -336,7 +336,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                   >
                     <FaGlobe />
-                    <span>Site</span>
+                    <span>{t("site_label")}</span>
                   </IconLink>
                 )}
                 {projeto.github && (
@@ -346,7 +346,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                   >
                     <FaGithub />
-                    <span>GitHub</span>
+                    <span>{t("github_label")}</span>
                   </IconLink>
                 )}
               </CardFooter>

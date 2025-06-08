@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -22,10 +23,11 @@ const FooterContainer = styled.footer`
 `;
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <FooterContainer>
-      &copy; {new Date().getFullYear()} Marcelo Bueno. Todos os direitos
-      reservados.
+      &copy; {new Date().getFullYear()} Marcelo Bueno. {t("rights_reserved")}
     </FooterContainer>
   );
 }
