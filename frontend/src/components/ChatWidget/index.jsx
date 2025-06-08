@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { FaCommentDots, FaTimes } from "react-icons/fa";
 
@@ -96,12 +96,33 @@ export default function ChatWidget() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   const API_URL =
     import.meta.env.MODE === "development"
       ? import.meta.env.VITE_API_URL
       : "https://portfolio-backend-nu-brown.vercel.app";
 
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const toggleOpen = () => {
+    setOpen((prev) => {
+      const abrir = !prev;
+      if (abrir && messages.length === 0) {
+        setMessages([
+          {
+            from: "bot",
+            text: "Oi! Eu sou o Marcelo Bueno. Pode me perguntar qualquer coisa sobre mim, estou aqui pra te contar tudo!",
+          },
+        ]);
+      }
+      return abrir;
+    });
+  };
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -121,7 +142,7 @@ export default function ChatWidget() {
       inputRef.current.style.height = "auto";
     }
     setLoading(true);
-    setMessages((prev) => [...prev, { from: "bot", text: "pensando..." }]);
+    setMessages((prev) => [...prev, { from: "bot", text: "..." }]);
     try {
       const res = await fetch(`${API_URL}/api/chat.js`, {
         method: "POST",
@@ -144,6 +165,13 @@ export default function ChatWidget() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       {open && (
@@ -163,12 +191,14 @@ export default function ChatWidget() {
                 {msg.text}
               </Message>
             ))}
+            <div ref={messagesEndRef} />
           </Messages>
           <Form onSubmit={handleSubmit}>
             <Input
               ref={inputRef}
               value={input}
               onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
               placeholder="Digite sua mensagem"
               rows={1}
             />
