@@ -159,19 +159,22 @@ export default function ChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
       });
-      if (!res.ok) throw new Error("bad response");
+
       const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Erro inesperado");
+      }
+
       setMessages((prev) => [
         ...prev.slice(0, -1),
         { from: "bot", text: data.reply },
       ]);
-    } catch {
+    } catch (err) {
       setMessages((prev) => [
         ...prev.slice(0, -1),
-        { from: "bot", text: "Erro ao obter resposta." },
+        { from: "bot", text: err.message || "Erro ao obter resposta." },
       ]);
-    } finally {
-      setLoading(false);
     }
   };
 
