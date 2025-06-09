@@ -145,14 +145,17 @@ export default function ChatWidget() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim() || loading) return;
+
     const userText = input.trim();
     setMessages((prev) => [...prev, { from: "user", text: userText }]);
     setInput("");
     if (inputRef.current) {
       inputRef.current.style.height = "auto";
     }
+
     setLoading(true);
     setMessages((prev) => [...prev, { from: "bot", text: "..." }]);
+
     try {
       const res = await fetch(`${API_URL}/api/chat.js`, {
         method: "POST",
@@ -180,6 +183,8 @@ export default function ChatWidget() {
         ...prev.slice(0, -1),
         { from: "bot", text: err.message || "Erro ao obter resposta." },
       ]);
+    } finally {
+      setLoading(false); // 🔥 ESSENCIAL PARA REATIVAR O INPUT
     }
   };
 
