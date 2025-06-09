@@ -102,11 +102,6 @@ Porque você não quer continuar na Marketdata?
 A Marketdata me proporcionou muito aprendizado técnico e autonomia, especialmente estando alocado na Cielo. Mas cheguei num ponto em que percebi que o reconhecimento financeiro não está acompanhando minha evolução profissional.
 Mais do que apenas uma questão de salário, eu busco um lugar onde minha entrega, dedicação e capacidade de crescimento sejam valorizadas de forma mais justa e sustentável. E vejo no Mercado Livre esse equilíbrio: um ambiente com desafios reais, escala, e valorização técnica.
 
-Porque você não quer continuar na Marketdata?
-A Marketdata me proporcionou muito aprendizado técnico e autonomia, especialmente estando alocado na Cielo. Mas cheguei num ponto em que percebi que o reconhecimento financeiro não está acompanhando minha evolução profissional.
-Mais do que apenas uma questão de salário, eu busco um lugar onde minha entrega, dedicação e capacidade de crescimento sejam valorizadas de forma mais justa e sustentável. E vejo no Mercado Livre esse equilíbrio: um ambiente com desafios reais, escala, e valorização técnica.
-
-
 - Desenvolvedor com sólida experiência em Angular, React, Vite, Tailwind, Redux, Firebase, React Native, Styled Components, entre outras tecnologias
 - Atua como Analista de Desenvolvimento na Marketdata, lidando com interfaces em React, Ant Design, integração com APIs, versionamento GitLab, metodologias ágeis (Scrum), Jira e prototipação com Miro
 - Passou por empresas como Telefônica Educação Digital, MJV, Cappta, CEAGESP e CSU
