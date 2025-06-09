@@ -7,6 +7,8 @@ Aplicação React com Vite que agora possui um pequeno backend em Node.js para i
 1. Copie `server/.env.example` para `server/.env` e `frontend/.env.example` para `frontend/.env`.
    Preencha `OPENAI_API_KEY` com sua chave da OpenAI e, opcionalmente,
    ajuste `RATE_LIMIT_MAX` e `RATE_LIMIT_WINDOW_MS` para configurar o limite de requisições.
+   Se o limite for excedido, a API responde com status `429` e a mensagem
+   "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.".
 2. Instale as dependências de cada parte:
    ```bash
    npm install --prefix frontend
