@@ -163,6 +163,11 @@ export default function ChatWidget() {
       const data = await res.json();
 
       if (!res.ok) {
+        if (res.status === 429) {
+          throw new Error(
+            "Você está enviando muitas mensagens. Tente novamente em breve."
+          );
+        }
         throw new Error(data.error || "Erro inesperado");
       }
 
