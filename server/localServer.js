@@ -2,11 +2,23 @@ import express from "express";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import bodyParser from "body-parser";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
 const port = 3001;
+
+const limiter = rateLimit({
+  windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
+  max: Number(process.env.RATE_LIMIT_MAX) || 5,
+  message: {
+    error:
+      "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -22,7 +34,7 @@ Também é fundador da EntreElos, e adora criar experiências românticas digita
 
 app.use(bodyParser.json());
 
-app.post("/api/chat", async (req, res) => {
+app.post("/api/chat", limiter, async (req, res) => {
   const { message } = req.body;
 
   try {
