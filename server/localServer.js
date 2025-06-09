@@ -12,6 +12,10 @@ const port = 3001;
 const limiter = rateLimit({
   windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
   max: Number(process.env.RATE_LIMIT_MAX) || 5,
+  message: {
+    error:
+      "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.",
+  },
   standardHeaders: true,
   legacyHeaders: false,
 });
