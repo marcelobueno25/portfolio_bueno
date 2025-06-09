@@ -1,9 +1,12 @@
 import OpenAI from "openai";
+import rateLimit from "express-rate-limit";
 
-// 🔒 Controle de limite por IP
-const rateLimitMap = new Map();
-const LIMIT = 5; // Máximo de 5 mensagens...
-const WINDOW_MS = 60 * 1000; // ...em 1 minuto
+const limiter = rateLimit({
+  windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
+  max: Number(process.env.RATE_LIMIT_MAX) || 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -136,22 +139,21 @@ export default async function handler(req, res) {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
-  // 🧠 Controle de IP e limite de requisições
-  const ip =
-    req.headers["x-forwarded-for"] || req.socket.remoteAddress || "unknown";
-  const now = Date.now();
-  const timestamps = rateLimitMap.get(ip) || [];
-  const recent = timestamps.filter((ts) => now - ts < WINDOW_MS);
-
-  if (recent.length >= LIMIT) {
-    return res.status(429).json({
-      error:
-        "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.",
+  // 🧠 Controle de requisições
+  const runLimiter = () =>
+    new Promise((resolve, reject) => {
+      limiter(req, res, (result) => {
+        if (result instanceof Error) return reject(result);
+        return resolve(result);
+      });
     });
-  }
 
-  recent.push(now);
-  rateLimitMap.set(ip, recent);
+  try {
+    await runLimiter();
+    if (res.headersSent) return;
+  } catch {
+    return; // limiter já enviou a resposta
+  }
 
   try {
     const completion = await openai.chat.completions.create({
