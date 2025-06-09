@@ -1,0 +1,178 @@
+{
+  "welcome": "Bem vindo, ao meu",
+  "portfolio": "Portfolio",
+  "home_intro": "Olá, eu sou {{name}},",
+  "nav_home": "Início",
+  "nav_about": "Sobre",
+  "nav_career": "Carreira",
+  "nav_projects": "Projetos",
+  "nav_contact": "Contato",
+  "show_more": "Ver mais",
+  "show_less": "Ver menos",
+  "about_title": "Sobre mim",
+  "career_title": "Minha Carreira",
+  "projects_title": "Projetos",
+  "contact_title": "Contato",
+  "download_cv": "Download CV",
+  "name": "Nome",
+  "your_name": "Seu nome",
+  "your_email": "Seu e-mail",
+  "message": "Mensagem",
+  "your_message": "Sua mensagem",
+  "send_message": "Enviar mensagem",
+  "dev_role": "Desenvolvedor Front-End",
+  "level_senior": "Pleno / Sênior",
+  "chat_presentation": "Oi! Eu sou o Marcelo Bueno. Pode me perguntar qualquer coisa sobre mim, estou aqui pra te contar tudo!",
+  "about_text": "Sou um desenvolvedor movido por curiosidade, criatividade e vontade de transformar ideias em experiências reais. Desde cedo fui atrás de aprendizado por conta própria, participando de projetos sociais, estudando de forma independente e sempre buscando me reinventar.Valorizo ambientes colaborativos, onde posso aprender, contribuir e crescer com propósito. Sou prático, comprometido, gosto de resolver problemas com clareza tenho facilidade em me adaptar a novos desafios. Acredito que tecnologia só faz sentido quando conecta pessoas e gera impacto positivo.",
+  "contact_heading": "Entre em contato",
+  "contact_intro": "Me mande um e-mail, mensagem ou me chame nas redes sociais.",
+  "captcha_required": "Por favor, confirme que você não é um robô.",
+  "msg_success": "✅ Mensagem enviada com sucesso!",
+  "msg_error": "❌ Ocorreu um erro. Tente novamente.",
+  "rights_reserved": "Todos os direitos reservados.",
+  "site_label": "Site",
+  "github_label": "GitHub",
+  "alt_photo": "Minha foto",
+  "career_experiences": [
+    {
+      "title": "Analista de Desenvolvimento",
+      "company": "Marketdata · Mar 2021 - Atual",
+      "description": [
+        "✓ Desenvolvimento de interfaces em React, utilizando a biblioteca Ant Design (antd) para construção de componentes reutilizáveis e responsivos;",
+        "✓ Criação e manutenção de layouts de telas completas, alinhadas com as demandas de negócio;",
+        "✓ Comunicação direta com o cliente para entendimento de requisitos, levantamento de novas funcionalidades e ajustes em features existentes;",
+        "✓ Integração com back-end (API e banco de dados), em conjunto com o desenvolvedor responsável pela camada de dados;",
+        "✓ Utilização do GitLab para versionamento de código e processos de merge/review;",
+        "✓ Planejamento e acompanhamento de tarefas via Jira, seguindo a metodologia ágil Scrum;",
+        "✓ Desenho de fluxos e protótipos utilizando o Miro, facilitando a comunicação entre o time e o cliente;",
+        "✓ Participação ativa em daily meetings, plannings e reviews com foco em entregas contínuas e melhoria do produto."
+      ]
+    },
+    {
+      "title": "Desenvolvedor Front-End",
+      "company": "Telefônica Educação Digital · Dez 2019 - Mar 2021",
+      "description": [
+        "✓ Desenvolvimento de Jogos Educacionais para a web.",
+        "✓ Criação de Landing Pages utilizando HTML5, CSS3 e JavaScript.",
+        "✓ Treinamento de novos membros da equipe.",
+        "✓ Facilitação de sessões de brainstorming e alinhamento estratégico para aprimorar recursos online.",
+        "✓ Fechamento de pacotes SCORM 1.2."
+      ]
+    },
+    {
+      "title": "Desenvolvedor Front-End",
+      "company": "MJV Technology & Innovation · Out 2018 - Nov 2019",
+      "description": [
+        "✓ Designado para atuar no Bradesco Seguros.",
+        "✓ Responsável pelo desenvolvimento de Landing Pages utilizando tecnologias como HTML, Nunjucks, Gulp, CSS, SASS, Bootstrap, JavaScript (ES6), jQuery, além da gestão de dependências com NPM e Yarn, e o uso de sistemas de controle de versão como Git e Gitlab.",
+        "✓ Forneci suporte em CSS, HTML, JavaScript e Design para a plataforma Sharepoint 2013.",
+        "✓ Realizei tarefas de recorte e edição de imagens utilizando ferramentas como o Adobe Photoshop e Gimp.",
+        "✓ Garanti a compatibilidade com diferentes navegadores e implementei soluções de fallback para o Internet Explorer."
+      ]
+    },
+    {
+      "title": "Suporte Técnico",
+      "company": "Cappta · Jun 2018 - Out 2018",
+      "description": [
+        "✓ Realização de análise de erros e esclarecimento de dúvidas;",
+        "✓ Execução de procedimentos técnicos via acesso remoto;",
+        "✓ Acompanhamento e monitoramento de chamados da área;",
+        "✓ Contribuição para o tratamento de backlog."
+      ]
+    },
+    {
+      "title": "Estagiário em Suporte Técnico",
+      "company": "CEAGESP · Set 2017 - Mai 2018",
+      "description": [
+        "✓ Prestação de suporte ao usuário, oferecendo esclarecimentos e soluções para questões técnicas.",
+        "✓ Realização de instalações, configurações e manutenções de hardware e software.",
+        "✓ Resolução de desafios relacionados à conectividade na rede de computadores da empresa.",
+        "✓ Colaboração com técnicos e analistas em tarefas relacionadas à infraestrutura de tecnologia da informação."
+      ]
+    },
+    {
+      "title": "Backoffice",
+      "company": "CSU CardSystem · Mar 2015 - Fev 2017",
+      "description": [
+        "Encarregado de prestar um atendimento de alta qualidade, assegurando que todas as solicitações dos clientes sejam tratadas de maneira adequada. Isso inclui a resolução de problemas e reclamações de alta importância, além de oferecer suporte ao site Natura."
+      ]
+    }
+  ],
+  "projects_list": [
+    {
+      "title": "Coffe Delivery",
+      "description": "Aplicação de e-commerce fictícia para venda de cafés especiais com carrinho e formulário de entrega.",
+      "date": "jan de 2023"
+    },
+    {
+      "title": "FeedHub",
+      "description": "Rede social fictícia para treinar componentes, props, estado e CSS Modules.",
+      "date": "jan de 2023"
+    },
+    {
+      "title": "ToDo List",
+      "description": "Lista de tarefas para adicionar, concluir e remover atividades.",
+      "date": "jan de 2023"
+    },
+    {
+      "title": "Game - Número Secreto",
+      "description": "Jogo simples para adivinhar número secreto.",
+      "date": "jan de 2022"
+    },
+    {
+      "title": "Pokédex",
+      "description": "Aplicação com PokéAPI e RxJS para exibir dados dos Pokémon.",
+      "date": "jan de 2021"
+    },
+    {
+      "title": "Police and Thief (Android)",
+      "description": "Jogo retrô baseado em Keystone Kapers. Desenvolvido em Unity com C#.",
+      "date": "fev de 2019 - jul de 2019"
+    },
+    {
+      "title": "Base Apparel",
+      "description": "Landing page 'coming soon' com validação de formulário e layout responsivo.",
+      "date": "jan de 2019"
+    },
+    {
+      "title": "Caminar",
+      "description": "Landing page minimalista ideal para projetos criativos.",
+      "date": "jan de 2019"
+    },
+    {
+      "title": "Caravan",
+      "description": "Página para agências de turismo com layout moderno e seções modulares.",
+      "date": "jan de 2019"
+    },
+    {
+      "title": "Construtiva",
+      "description": "Landing page para construção civil com foco em clareza e apresentação profissional.",
+      "date": "jan de 2019"
+    },
+    {
+      "title": "Sistema biométrico (Arduino)",
+      "description": "Projeto acadêmico de segurança com acesso biométrico e controle de agrotóxicos.",
+      "date": "jul de 2018 - nov de 2018"
+    },
+    {
+      "title": "App de Comunicação (Android)",
+      "description": "App para medição da poluição e comunicação entre trabalhadores.",
+      "date": "fev de 2018 - jun de 2018"
+    },
+    {
+      "title": "Sabil",
+      "description": "Landing page moderna e responsiva para startups e produtos digitais.",
+      "date": "jan de 2018"
+    },
+    {
+      "title": "Métodos de Ordenação",
+      "description": "Software acadêmico para comparar performance de algoritmos de ordenação.",
+      "date": "ago de 2017 - nov de 2017"
+    },
+    {
+      "title": "Jogo sobre Sustentabilidade",
+      "description": "Jogo educativo para separar resíduos recicláveis, feito em Construct 2.",
+      "date": "2017"
+    }
+  ]
+}

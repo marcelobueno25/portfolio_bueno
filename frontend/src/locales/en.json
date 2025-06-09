@@ -1,0 +1,178 @@
+{
+  "welcome": "Welcome to my",
+  "portfolio": "Portfolio",
+  "home_intro": "Hello, I am {{name}},",
+  "nav_home": "Home",
+  "nav_about": "About",
+  "nav_career": "Career",
+  "nav_projects": "Projects",
+  "nav_contact": "Contact",
+  "show_more": "Show more",
+  "show_less": "Show less",
+  "about_title": "About me",
+  "career_title": "My Career",
+  "projects_title": "Projects",
+  "contact_title": "Contact",
+  "download_cv": "Download CV",
+  "name": "Name",
+  "your_name": "Your name",
+  "your_email": "Your email",
+  "message": "Message",
+  "your_message": "Your message",
+  "send_message": "Send message",
+  "dev_role": "Front-End Developer",
+  "level_senior": "Mid/Senior",
+  "chat_presentation": "Hi! I'm Marcelo Bueno. You can ask me anything about myself — I'm here to tell you everything!",
+  "about_text": "I'm a developer driven by curiosity, creativity, and the desire to turn ideas into real experiences. From an early age, I pursued learning on my own, getting involved in social projects, studying independently, and always looking for ways to reinvent myself. I value collaborative environments where I can learn, contribute, and grow with purpose. I'm practical, committed, and enjoy solving problems with clarity. I adapt easily to new challenges and believe that technology only makes sense when it connects people and creates a positive impact.",
+  "contact_heading": "Get in touch",
+  "contact_intro": "Send me an email, message or reach me on social networks.",
+  "captcha_required": "Please confirm you are not a robot.",
+  "msg_success": "✅ Message sent successfully!",
+  "msg_error": "❌ An error occurred. Try again.",
+  "rights_reserved": "All rights reserved.",
+  "site_label": "Site",
+  "github_label": "GitHub",
+  "alt_photo": "My photo",
+  "career_experiences": [
+    {
+      "title": "Development Analyst",
+      "company": "Marketdata · Mar 2021 - Present",
+      "description": [
+        "✓ Front-end interfaces built with React and Ant Design;",
+        "✓ Layout creation aligned with business requirements;",
+        "✓ Client communication to gather requirements and refine features;",
+        "✓ Back-end integration with APIs and databases;",
+        "✓ Code versioning and merge reviews using GitLab;",
+        "✓ Task planning with Jira following Scrum;",
+        "✓ Workflow diagrams and prototypes in Miro;",
+        "✓ Active participation in meetings focused on continuous delivery."
+      ]
+    },
+    {
+      "title": "Front-End Developer",
+      "company": "Telefônica Educação Digital · Dec 2019 - Mar 2021",
+      "description": [
+        "✓ Development of educational games for the web.",
+        "✓ Landing page creation with HTML5, CSS3 and JavaScript.",
+        "✓ Training of new team members.",
+        "✓ Brainstorm sessions and strategic alignment for online resources.",
+        "✓ Packaging SCORM 1.2 files."
+      ]
+    },
+    {
+      "title": "Front-End Developer",
+      "company": "MJV Technology & Innovation · Oct 2018 - Nov 2019",
+      "description": [
+        "✓ Assigned to Bradesco Seguros.",
+        "✓ Developed landing pages using HTML, Nunjucks, Gulp, CSS, SASS, Bootstrap, JavaScript (ES6), jQuery, with dependency management via NPM/Yarn and Git/Gitlab.",
+        "✓ Provided CSS, HTML, JavaScript and design support for Sharepoint 2013.",
+        "✓ Image editing with Adobe Photoshop and Gimp.",
+        "✓ Ensured cross-browser compatibility and fallback solutions for Internet Explorer."
+      ]
+    },
+    {
+      "title": "Technical Support",
+      "company": "Cappta · Jun 2018 - Oct 2018",
+      "description": [
+        "✓ Error analysis and doubts clarification;",
+        "✓ Execution of technical procedures via remote access;",
+        "✓ Monitoring of support tickets;",
+        "✓ Contribution to backlog handling."
+      ]
+    },
+    {
+      "title": "Technical Support Intern",
+      "company": "CEAGESP · Sep 2017 - May 2018",
+      "description": [
+        "✓ User support with technical solutions.",
+        "✓ Installation, configuration and maintenance of hardware and software.",
+        "✓ Troubleshooting connectivity issues.",
+        "✓ Collaboration with technicians and analysts on IT infrastructure tasks."
+      ]
+    },
+    {
+      "title": "Backoffice",
+      "company": "CSU CardSystem · Mar 2015 - Feb 2017",
+      "description": [
+        "Provided high-quality customer service, handling important issues and offering support for the Natura website."
+      ]
+    }
+  ],
+  "projects_list": [
+    {
+      "title": "Coffe Delivery",
+      "description": "Fictional e-commerce app selling special coffees with cart and delivery form.",
+      "date": "Jan 2023"
+    },
+    {
+      "title": "FeedHub",
+      "description": "Fictional social network used to practice components, props, state and CSS Modules.",
+      "date": "Jan 2023"
+    },
+    {
+      "title": "ToDo List",
+      "description": "Task list to add, complete and remove activities.",
+      "date": "Jan 2023"
+    },
+    {
+      "title": "Secret Number Game",
+      "description": "Simple game to guess a secret number.",
+      "date": "Jan 2022"
+    },
+    {
+      "title": "Pokédex",
+      "description": "Application using the PokéAPI and RxJS to display Pokémon data.",
+      "date": "Jan 2021"
+    },
+    {
+      "title": "Police and Thief (Android)",
+      "description": "Retro game inspired by Keystone Kapers, built in Unity with C#.",
+      "date": "Feb 2019 - Jul 2019"
+    },
+    {
+      "title": "Base Apparel",
+      "description": "Coming soon landing page with form validation and responsive layout.",
+      "date": "Jan 2019"
+    },
+    {
+      "title": "Caminar",
+      "description": "Minimalist landing page ideal for creative projects.",
+      "date": "Jan 2019"
+    },
+    {
+      "title": "Caravan",
+      "description": "Tourism agency page with modern layout and modular sections.",
+      "date": "Jan 2019"
+    },
+    {
+      "title": "Construtiva",
+      "description": "Landing page for civil construction with a professional presentation.",
+      "date": "Jan 2019"
+    },
+    {
+      "title": "Biometric System (Arduino)",
+      "description": "Academic project using biometric access for pesticide control.",
+      "date": "Jul 2018 - Nov 2018"
+    },
+    {
+      "title": "Communication App (Android)",
+      "description": "App to measure pollution and provide communication between workers.",
+      "date": "Feb 2018 - Jun 2018"
+    },
+    {
+      "title": "Sabil",
+      "description": "Modern responsive landing page for startups and digital products.",
+      "date": "Jan 2018"
+    },
+    {
+      "title": "Sorting Methods",
+      "description": "Academic software to compare sorting algorithm performance.",
+      "date": "Aug 2017 - Nov 2017"
+    },
+    {
+      "title": "Sustainability Game",
+      "description": "Educational game made in Construct 2 to separate recyclable waste.",
+      "date": "2017"
+    }
+  ]
+}
