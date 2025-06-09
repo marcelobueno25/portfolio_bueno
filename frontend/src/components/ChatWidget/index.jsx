@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { FaRobot, FaTimes } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const ToggleButton = styled.button`
   position: fixed;
@@ -105,12 +106,19 @@ const SendButton = styled.button`
 `;
 
 export default function ChatWidget() {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messages.length === 1 && messages[0].from === "bot") {
+      setMessages([{ from: "bot", text: t("chat_presentation") }]);
+    }
+  }, [i18n.language]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -130,7 +138,7 @@ export default function ChatWidget() {
         setMessages([
           {
             from: "bot",
-            text: "Oi! Eu sou o Marcelo Bueno. Pode me perguntar qualquer coisa sobre mim, estou aqui pra te contar tudo!",
+            text: t("chat_presentation"),
           },
         ]);
       }

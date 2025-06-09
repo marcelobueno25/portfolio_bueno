@@ -27,8 +27,10 @@ const resources = {
       send_message: "Enviar mensagem",
       dev_role: "Desenvolvedor Front-End",
       level_senior: "Pleno / Sênior",
+      chat_presentation:
+        "Oi! Eu sou o Marcelo Bueno. Pode me perguntar qualquer coisa sobre mim, estou aqui pra te contar tudo!",
       about_text:
-        "Olá! Meu nome é Marcelo Bueno, sou desenvolvedor front-end com foco em criar experiências digitais visuais, intuitivas e modernas. Acredito que design e código caminham juntos para entregar soluções que encantam pessoas e resolvem problemas reais. Tenho experiência com React, styled-components, animações com Framer Motion e boas práticas de UI/UX. Estou sempre buscando evoluir como profissional e como pessoa — seja criando novos projetos, estudando tendências ou trocando ideias com a comunidade.",
+        "Sou um desenvolvedor movido por curiosidade, criatividade e vontade de transformar ideias em experiências reais. Desde cedo fui atrás de aprendizado por conta própria, participando de projetos sociais, estudando de forma independente e sempre buscando me reinventar.Valorizo ambientes colaborativos, onde posso aprender, contribuir e crescer com propósito. Sou prático, comprometido, gosto de resolver problemas com clareza tenho facilidade em me adaptar a novos desafios. Acredito que tecnologia só faz sentido quando conecta pessoas e gera impacto positivo.",
       contact_heading: "Entre em contato",
       contact_intro:
         "Me mande um e-mail, mensagem ou me chame nas redes sociais.",
@@ -222,8 +224,10 @@ const resources = {
       send_message: "Send message",
       dev_role: "Front-End Developer",
       level_senior: "Mid/Senior",
+      chat_presentation:
+        "Hi! I'm Marcelo Bueno. You can ask me anything about myself — I'm here to tell you everything!",
       about_text:
-        "Hi! My name is Marcelo Bueno, a front-end developer focused on creating modern, intuitive digital experiences. I believe design and code work together to deliver solutions that delight people and solve real problems. I have experience with React, styled-components, animations with Framer Motion and good UI/UX practices. I am always seeking to grow professionally and personally—creating new projects, studying trends or sharing ideas with the community.",
+        "I'm a developer driven by curiosity, creativity, and the desire to turn ideas into real experiences. From an early age, I pursued learning on my own, getting involved in social projects, studying independently, and always looking for ways to reinvent myself. I value collaborative environments where I can learn, contribute, and grow with purpose. I'm practical, committed, and enjoy solving problems with clarity. I adapt easily to new challenges and believe that technology only makes sense when it connects people and creates a positive impact.",
       contact_heading: "Get in touch",
       contact_intro:
         "Send me an email, message or reach me on social networks.",
@@ -415,8 +419,10 @@ const resources = {
       send_message: "Enviar mensaje",
       dev_role: "Desarrollador Front-End",
       level_senior: "Pleno / Senior",
+      chat_presentation:
+        "¡Hola! Soy Marcelo Bueno. ¡Puedes preguntarme lo que quieras sobre mí, estoy aquí para contártelo todo!",
       about_text:
-        "¡Hola! Mi nombre es Marcelo Bueno, desarrollador front-end enfocado en crear experiencias digitales visuales, intuitivas y modernas. Creo que el diseño y el código van de la mano para entregar soluciones que encantan a las personas y resuelven problemas reales. Tengo experiencia con React, styled-components, animaciones con Framer Motion y buenas prácticas de UI/UX. Siempre busco evolucionar profesional y personalmente — ya sea creando nuevos proyectos, estudiando tendencias o compartiendo ideas con la comunidad.",
+        "Soy un desarrollador impulsado por la curiosidad, la creatividad y las ganas de transformar ideas en experiencias reales. Desde temprana edad busqué aprender por mi cuenta, participando en proyectos sociales, estudiando de forma independiente y siempre buscando reinventarme. Valoro los entornos colaborativos, donde puedo aprender, contribuir y crecer con propósito. Soy práctico, comprometido, y me gusta resolver problemas con claridad. Me adapto fácilmente a nuevos desafíos y creo que la tecnología solo tiene sentido cuando conecta a las personas y genera un impacto positivo.",
       contact_heading: "Ponte en contacto",
       contact_intro:
         "Envíame un correo, mensaje o háblame en las redes sociales.",
