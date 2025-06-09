@@ -12,7 +12,7 @@ Aplicação React com Vite que agora possui um pequeno backend em Node.js para i
 2. Instale as dependências de cada parte:
    ```bash
    npm install --prefix frontend
-   npm install --prefix server
+   npm dev --prefix server
    ```
 3. Em terminais separados, rode:
    ```bash
