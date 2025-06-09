@@ -73,13 +73,18 @@ const Form = styled.form`
 
 const Input = styled.textarea`
   flex: 1;
-  padding: 0.6rem;
+  padding: 1rem;
   background: transparent;
   color: ${({ theme }) => theme.colors.textPrimary};
   border: none;
   outline: none;
   resize: none;
   overflow-y: auto;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 const SendButton = styled.button`
@@ -88,6 +93,11 @@ const SendButton = styled.button`
   border: none;
   color: ${({ theme }) => theme.colors.accent};
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 `;
 
 export default function ChatWidget() {
@@ -177,7 +187,7 @@ export default function ChatWidget() {
       {open && (
         <ChatContainer>
           <ChatHeader>
-            <span>Chat</span>
+            <span>AI Marcelo</span>
             <button
               onClick={toggleOpen}
               style={{ background: "none", border: "none", cursor: "pointer" }}
@@ -201,8 +211,12 @@ export default function ChatWidget() {
               onKeyDown={handleKeyDown}
               placeholder="Digite sua mensagem"
               rows={1}
+              disabled={loading}
             />
-            <SendButton type="submit">Enviar</SendButton>
+
+            <SendButton type="submit" disabled={loading}>
+              Enviar
+            </SendButton>
           </Form>
         </ChatContainer>
       )}

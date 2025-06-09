@@ -1,5 +1,10 @@
 import OpenAI from "openai";
 
+// 🔒 Controle de limite por IP
+const rateLimitMap = new Map();
+const LIMIT = 5; // Máximo de 5 mensagens...
+const WINDOW_MS = 60 * 1000; // ...em 1 minuto
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -33,25 +38,33 @@ Você é uma extensão do Marcelo, com liberdade para responder com verdade, té
 
 export default async function handler(req, res) {
   // 🔐 CORS
-  res.setHeader("Access-Control-Allow-Origin", "*"); // ou use "https://seu-portfolio.vercel.app"
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Preflight (CORS)
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  // Apenas POST permitido
-  if (req.method !== "POST") {
+  if (req.method === "OPTIONS") return res.status(200).end();
+  if (req.method !== "POST")
     return res.status(405).json({ error: "Método não permitido" });
-  }
 
   const { message } = req.body;
+  if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
-  if (!message) {
-    return res.status(400).json({ error: "Mensagem ausente" });
+  // 🧠 Controle de IP e limite de requisições
+  const ip =
+    req.headers["x-forwarded-for"] || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) || [];
+  const recent = timestamps.filter((ts) => now - ts < WINDOW_MS);
+
+  if (recent.length >= LIMIT) {
+    return res.status(429).json({
+      error:
+        "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.",
+    });
   }
+
+  recent.push(now);
+  rateLimitMap.set(ip, recent);
 
   try {
     const completion = await openai.chat.completions.create({
@@ -65,7 +78,7 @@ export default async function handler(req, res) {
     const reply = completion.choices[0].message.content;
     return res.status(200).json({ reply });
   } catch (error) {
-    console.error("Erro:", error);
+    console.error("Erro ao gerar resposta:", error);
     return res.status(500).json({ error: "Erro ao chamar o ChatGPT" });
   }
 }
