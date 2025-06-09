@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { FaCommentDots, FaTimes } from "react-icons/fa";
+import { FaRobot, FaTimes } from "react-icons/fa";
 
 const ToggleButton = styled.button`
   position: fixed;
@@ -9,8 +9,9 @@ const ToggleButton = styled.button`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.muted};
+  font-size: 1.5rem;
   border: none;
   display: flex;
   align-items: center;
@@ -36,12 +37,15 @@ const ChatContainer = styled.div`
 `;
 
 const ChatHeader = styled.div`
-  background: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.textPrimary};
   padding: 0.5rem 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  button {
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
 `;
 
 const Messages = styled.div`
@@ -60,7 +64,7 @@ const Message = styled.div`
   background: ${({ from, theme }) =>
     from === "user" ? theme.colors.accent : theme.colors.muted};
   color: ${({ from, theme }) =>
-    from === "user" ? theme.colors.black : theme.colors.textPrimary};
+    from === "user" ? theme.colors.muted : theme.colors.textPrimary};
   padding: 0.4rem 0.6rem;
   border-radius: ${({ from }) =>
     from === "user" ? "12px 12px 0 12px" : "12px 12px 12px 0"};
@@ -235,7 +239,7 @@ export default function ChatWidget() {
       )}
       {!open && (
         <ToggleButton onClick={toggleOpen}>
-          <FaCommentDots />
+          <FaRobot />
         </ToggleButton>
       )}
     </>
