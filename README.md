@@ -4,7 +4,7 @@ Aplicação React com Vite que agora possui um pequeno backend em Node.js para i
 
 ## Como rodar
 
-1. Copie `server/.env.example` para `server/.env` e preencha `OPENAI_API_KEY` com sua chave da OpenAI.
+1. Copie `server/.env.example` para `server/.env` e `frontend/.env.example` para `frontend/.env`. Preencha `OPENAI_API_KEY` com sua chave da OpenAI.
 2. Instale as dependências de cada parte:
    ```bash
    npm install --prefix frontend
