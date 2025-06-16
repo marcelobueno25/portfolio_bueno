@@ -85,31 +85,35 @@ const ProjectImage = styled.img`
   margin-bottom: 1rem;
 `;
 
-const LinkContainer = styled.a`
+const LinkContainer = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  background: ${({ theme }) => theme.colors.background};
-  border-radius: 0 0 0 5px;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(20, 20, 20, 0.85); /* mais opaco */
+  border-radius: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
+  gap: 0.6rem;
+  padding: 0.3rem 0.4rem;
   z-index: 10;
-  padding: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* sombra mais forte */
+  backdrop-filter: blur(6px); /* leve desfoque de fundo */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* detalhe de borda */
 `;
 
 const ExternalLinkIcon = styled.a`
+  color: #ffffff;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  margin: 0 0.5rem;
+  padding: 0.45rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s, transform 0.2s, color 0.2s;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.accent};
+    background: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 
