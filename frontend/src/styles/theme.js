@@ -1,6 +1,7 @@
 export const darkTheme = {
   name: "dark",
   colors: {
+    primary: "#00C2FF", // cor primária clara
     background: "#0a0a0a",
     textPrimary: "#F1F1F1",
     textSecondary: "#A1A1A1",
@@ -24,6 +25,7 @@ export const darkTheme = {
 export const lightTheme = {
   name: "light",
   colors: {
+    primary: "#007bff", // cor primária escura
     background: "#ffffff",
     textPrimary: "#0a0a0a",
     textSecondary: "#444",

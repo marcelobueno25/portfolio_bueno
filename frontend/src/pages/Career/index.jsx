@@ -51,7 +51,7 @@ const Job = styled.li`
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.colors.accent};
+    background-color: ${({ theme }) => theme.colors.primary};
     border: 2px solid ${({ theme }) => theme.colors.background};
   }
 `;
@@ -59,7 +59,7 @@ const Job = styled.li`
 const JobTitle = styled.h3`
   margin: 0;
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const Company = styled.p`

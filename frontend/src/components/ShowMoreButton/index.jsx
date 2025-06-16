@@ -19,12 +19,12 @@ const Line = styled.div`
 const LinkText = styled.span`
   font-size: 1rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.textPrimary};
     text-decoration: underline;
   }
 `;
@@ -35,7 +35,7 @@ export default function ShowMoreLink({ isExpanded, onClick }) {
     <Wrapper>
       <Line />
       <LinkText onClick={onClick}>
-        {isExpanded ? t('show_less') : t('show_more')}
+        {isExpanded ? t("show_less") : t("show_more")}
       </LinkText>
       <Line />
     </Wrapper>

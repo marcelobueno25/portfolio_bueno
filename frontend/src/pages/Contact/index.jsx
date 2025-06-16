@@ -52,7 +52,7 @@ const ContactItem = styled.div`
 `;
 
 const Icon = styled.span`
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 1rem;
 `;
 
@@ -78,7 +78,7 @@ const Input = styled.input`
   outline: none;
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.accent};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -93,12 +93,12 @@ const TextArea = styled.textarea`
   min-height: 120px;
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.accent};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
 const Button = styled.button`
-  background: ${({ theme }) => theme.colors.accent};
+  background: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.muted};
   padding: 0.75rem 1.5rem;
   border: none;

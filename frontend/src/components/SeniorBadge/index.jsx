@@ -3,8 +3,8 @@ import styled from "styled-components";
 const SeniorBadge = styled.span`
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.accent},
-    ${({ theme }) => theme.colors.accent}
+    ${({ theme }) => theme.colors.primary},
+    ${({ theme }) => theme.colors.primary}
   );
   color: ${({ theme }) => theme.colors.muted}; /* cor adaptável ao tema */
   font-weight: bold;
@@ -15,13 +15,13 @@ const SeniorBadge = styled.span`
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.accent}66; /* 0.4 opacidade */
+      box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.primary}66; /* 0.4 opacidade */
     }
     70% {
-      box-shadow: 0 0 0 8px ${({ theme }) => theme.colors.accent}00; /* transparente */
+      box-shadow: 0 0 0 8px ${({ theme }) => theme.colors.primary}00; /* transparente */
     }
     100% {
-      box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.accent}00;
+      box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.primary}00;
     }
   }
 `;

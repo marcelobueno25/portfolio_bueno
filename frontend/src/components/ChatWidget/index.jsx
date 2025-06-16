@@ -63,7 +63,7 @@ const Message = styled.div`
   margin-bottom: 0.5rem;
   align-self: ${({ from }) => (from === "user" ? "flex-end" : "flex-start")};
   background: ${({ from, theme }) =>
-    from === "user" ? theme.colors.accent : theme.colors.muted};
+    from === "user" ? theme.colors.primary : theme.colors.muted};
   color: ${({ from, theme }) =>
     from === "user" ? theme.colors.muted : theme.colors.textPrimary};
   padding: 0.4rem 0.6rem;
@@ -96,7 +96,7 @@ const SendButton = styled.button`
   padding: 0 1rem;
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
 
   &:disabled {

@@ -56,7 +56,7 @@ const StyledIndicator = styled(motion.div)`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid ${({ theme }) => theme.colors.accent};
+    border-top: 6px solid ${({ theme }) => theme.colors.primary};
     animation: blink 1.5s infinite;
   }
 

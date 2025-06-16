@@ -53,8 +53,9 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled.a`
-  color: ${({ active }) => (active ? "#000" : "rgba(255, 255, 255, 0.6)")};
-  font-weight: 500;
+  color: ${({ active }) =>
+    active ? ({ theme }) => theme.colors.muted : "#fff"};
+  font-weight: ${({ active }) => (active ? "900" : "0")};
   text-decoration: none;
   font-size: 0.95rem;
   cursor: pointer;
@@ -62,13 +63,16 @@ const NavLink = styled.a`
   align-items: center;
   padding: 0.3rem 1.2rem;
   border-radius: 9px;
-  background: ${({ active }) => (active ? "#00FFE0" : "transparent")};
+  background: ${({ active }) =>
+    active ? ({ theme }) => theme.colors.primary : "transparent"};
   transition: all 0.3s ease;
   gap: 0.4rem;
 
   &:hover {
     background: ${({ active }) =>
-      active ? "rgba(0, 255, 224, 0.8)" : "rgba(255,255,255,0.1)"};
+      active
+        ? "rgba(({ theme }) => theme.colors.primary, 0.8)"
+        : "rgba(255,255,255,0.1)"};
     color: ${({ active }) => (active ? "#000" : "#fff")};
   }
 
