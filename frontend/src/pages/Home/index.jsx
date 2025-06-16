@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import GradientText from "@/components/GradientText";
 import Container from "@/components/Container";
-import MinhaFoto from "@/assets/minha-foto3.png"; // substitua pelo caminho correto
+import MinhaFoto from "@/assets/my-photo.png"; // substitua pelo caminho correto
 import {
   FaGithub,
   FaLinkedin,
