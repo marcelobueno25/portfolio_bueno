@@ -100,6 +100,21 @@
   ],
   "projects_list": [
     {
+      "title": "Rotinize",
+      "description": "Um app pra ajudar na organização de hábitos diários de um jeito visual, leve e personalizável.",
+      "date": "set de 2024"
+    },
+    {
+      "title": "Winlove",
+      "description": "Um site inspirado na estética nostálgica do Windows 97, cheio de interações e enigmas para ela resolver. Conforme explora, surgem novas pistas — até chegar no final, onde descobria o lugar exato onde o presente estava escondido.",
+      "date": "jun de 2024"
+    },
+    {
+      "title": "Cinelis",
+      "description": "No Dia dos Namorados, decidi dar um presente diferente: o Cinelis Plus, um site inspirado no Disney+ onde eu e minha noiva somos os protagonistas dos filmes e das séries.",
+      "date": "jun de 2024"
+    },
+    {
       "title": "Coffe Delivery",
       "description": "Aplicação de e-commerce fictícia para venda de cafés especiais com carrinho e formulário de entrega.",
       "date": "jan de 2023"

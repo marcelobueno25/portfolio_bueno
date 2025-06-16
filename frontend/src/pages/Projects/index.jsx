@@ -123,6 +123,24 @@ export default function Projects() {
   const meta = [
     {
       techs: [{ icon: FaReact, label: "React" }],
+      image: "projects/rotinize.png",
+      link: "teste",
+      github: "",
+    },
+    {
+      techs: [{ icon: FaReact, label: "React" }],
+      image: "projects/winlove.png",
+      link: "https://liricalis-winlove.netlify.app/",
+      github: "",
+    },
+    {
+      techs: [{ icon: FaReact, label: "React" }],
+      image: "projects/cinelis.png",
+      link: "https://cinelis-plus.netlify.app/",
+      github: "",
+    },
+    {
+      techs: [{ icon: FaReact, label: "React" }],
       image: "projects/coffee-delivery.png",
       link: "https://coffee-delivery-rho-two.vercel.app/",
       github: "https://github.com/marcelobueno25/coffee.delivery",
