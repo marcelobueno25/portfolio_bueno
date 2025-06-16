@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
   FaHome,
@@ -11,6 +12,7 @@ import {
   FaTerminal,
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { setLanguage } from "@/store/settingsSlice";
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -138,6 +140,12 @@ export default function Header({ isDarkMode, toggleTheme }) {
   const [activeSection, setActiveSection] = useState("home");
   const lastScrollY = useRef(0);
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.settings.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language, i18n]);
 
   useEffect(() => {
     let ticking = false;
@@ -211,8 +219,8 @@ export default function Header({ isDarkMode, toggleTheme }) {
         </NavLink>
       </Nav>
       <LanguageSelect
-        value={i18n.language}
-        onChange={(e) => i18n.changeLanguage(e.target.value)}
+        value={language}
+        onChange={(e) => dispatch(setLanguage(e.target.value))}
       >
         <option value="pt">PT</option>
         <option value="en">EN</option>

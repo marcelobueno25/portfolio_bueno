@@ -1,6 +1,8 @@
 import GradientText from "@/components/GradientText";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { hideIntro } from "@/store/settingsSlice";
 import styled, { keyframes, css } from "styled-components";
 import {
   FaReact,
@@ -131,6 +133,8 @@ export default function Intro() {
   const [hideText, setHideText] = useState(false);
   const [hideAll, setHideAll] = useState(false);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const introSeen = useSelector((state) => state.settings.introSeen);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -148,6 +152,13 @@ export default function Intro() {
     };
   }, []);
 
+  useEffect(() => {
+    if (hideAll) {
+      dispatch(hideIntro());
+    }
+  }, [hideAll, dispatch]);
+
+  if (introSeen) return null;
   if (hideAll) return null;
 
   return (

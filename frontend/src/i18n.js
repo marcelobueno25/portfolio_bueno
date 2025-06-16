@@ -11,9 +11,22 @@ const resources = {
   es: { translation: es },
 };
 
+const loadLanguage = () => {
+  try {
+    const saved = localStorage.getItem("settings");
+    if (saved) {
+      const { language } = JSON.parse(saved);
+      if (language) return language;
+    }
+  } catch {}
+  return typeof navigator !== "undefined"
+    ? navigator.language.slice(0, 2)
+    : "pt";
+};
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: "pt",
+  lng: loadLanguage(),
   fallbackLng: "pt",
   interpolation: {
     escapeValue: false,

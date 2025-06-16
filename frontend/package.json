@@ -19,7 +19,9 @@
     "react-router-dom": "^7.6.2",
     "styled-components": "^6.1.18",
     "i18next": "^23.10.0",
-    "react-i18next": "^14.1.1"
+    "react-i18next": "^14.1.1",
+    "@reduxjs/toolkit": "^2.2.0",
+    "react-redux": "^9.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
