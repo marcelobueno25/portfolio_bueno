@@ -6,9 +6,8 @@ import Container from "@/components/Container";
 import MinhaFoto from "@/assets/my-photo.png"; // substitua pelo caminho correto
 import {
   FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
+  FaLinkedinIn,
+  FaFacebookF,
   FaTiktok,
   FaDownload,
 } from "react-icons/fa";
@@ -19,6 +18,7 @@ import { IconCircle, SocialLinks } from "@/components/SocialLinks";
 import SeniorBadge from "@/components/SeniorBadge";
 import DownloadButton from "@/components/DownloadButton";
 import { useTranslation } from "react-i18next";
+import { GrInstagram } from "react-icons/gr";
 
 const ContainerHome = styled(Container)`
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -61,26 +61,6 @@ const Heading = styled(motion.h1)`
 
   @media (max-width: 480px) {
     font-size: 1.7rem;
-  }
-`;
-
-const Highlight = styled.span`
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-family: "Playwrite NO", cursive;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 2rem;
-  display: inline-block;
-  margin-top: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    display: block;
   }
 `;
 
@@ -127,16 +107,16 @@ export default function Home() {
             href="https://www.linkedin.com/in/marcelo-bueno-developer/"
             color="#fff"
           >
-            <FaLinkedin />
+            <FaLinkedinIn />
           </IconCircle>
           <IconCircle
             href="https://www.instagram.com/visao_de_programador/"
             color="#fff"
           >
-            <FaInstagram />
+            <GrInstagram />
           </IconCircle>
           <IconCircle href="https://facebook.com/" color="#fff">
-            <FaFacebook />
+            <FaFacebookF />
           </IconCircle>
           <IconCircle href="https://www.tiktok.com/@buenodev_" color="#fff">
             <FaTiktok />

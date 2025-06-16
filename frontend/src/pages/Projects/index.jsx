@@ -82,7 +82,6 @@ const ProjectImage = styled.img`
   height: 180px;
   object-fit: cover;
   border-radius: 6px;
-  margin-bottom: 1rem;
 `;
 
 const LinkContainer = styled.div`
