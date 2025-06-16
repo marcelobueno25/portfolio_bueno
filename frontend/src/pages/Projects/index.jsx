@@ -14,7 +14,7 @@ import {
   FaAngular,
   FaStream,
   FaProjectDiagram,
-  FaGlobe,
+  FaExternalLinkAlt,
   FaGithub,
 } from "react-icons/fa";
 import { SiSass, SiArduino } from "react-icons/si";
@@ -85,34 +85,31 @@ const ProjectImage = styled.img`
   margin-bottom: 1rem;
 `;
 
-const CardFooter = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  gap: 1.2rem;
-  margin-top: auto;
-  padding-top: 1.2rem;
-`;
-
-const IconLink = styled.a`
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 1.2rem;
+const LinkContainer = styled.a`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: ${({ theme }) => theme.colors.background};
+  border-radius: 0 0 0 5px;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  transition: 0.3s ease;
+  justify-content: center;
+  font-size: 1rem;
+  z-index: 10;
+  padding: 0.6rem;
+`;
+
+const ExternalLinkIcon = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
-    transform: translateY(-1px);
-  }
-
-  span {
-    font-size: 0.85rem;
-    font-weight: 500;
-    @media (max-width: 768px) {
-      display: none;
-    }
   }
 `;
 
@@ -284,7 +281,29 @@ export default function Projects() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               {projeto.image && (
-                <ProjectImage src={projeto.image} alt={projeto.title} />
+                <div style={{ position: "relative" }}>
+                  <ProjectImage src={projeto.image} alt={projeto.title} />
+                  {projeto.link && (
+                    <LinkContainer>
+                      <ExternalLinkIcon
+                        href={projeto.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t("github_label")}
+                      >
+                        <FaGithub />
+                      </ExternalLinkIcon>
+                      <ExternalLinkIcon
+                        href={projeto.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t("site_label")}
+                      >
+                        <FaExternalLinkAlt />
+                      </ExternalLinkIcon>
+                    </LinkContainer>
+                  )}
+                </div>
               )}
 
               <div style={{ flex: 1 }}>
@@ -293,29 +312,6 @@ export default function Projects() {
                 <Metadata>{projeto.date}</Metadata>
                 <TechTags items={projeto.techs} />
               </div>
-
-              <CardFooter>
-                {projeto.link && (
-                  <IconLink
-                    href={projeto.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGlobe />
-                    <span>{t("site_label")}</span>
-                  </IconLink>
-                )}
-                {projeto.github && (
-                  <IconLink
-                    href={projeto.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub />
-                    <span>{t("github_label")}</span>
-                  </IconLink>
-                )}
-              </CardFooter>
             </Card>
           ))}
         </AnimatePresence>
