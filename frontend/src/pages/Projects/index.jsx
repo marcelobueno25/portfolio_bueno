@@ -121,7 +121,7 @@ export default function Projects() {
     {
       techs: [{ icon: FaReact, label: "React" }],
       image: "projects/rotinize.png",
-      link: "teste",
+      link: "",
       github: "",
     },
     {
@@ -283,24 +283,28 @@ export default function Projects() {
               {projeto.image && (
                 <div style={{ position: "relative" }}>
                   <ProjectImage src={projeto.image} alt={projeto.title} />
-                  {projeto.link && (
+                  {(projeto.github || projeto.link) && (
                     <LinkContainer>
-                      <ExternalLinkIcon
-                        href={projeto.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("github_label")}
-                      >
-                        <FaGithub />
-                      </ExternalLinkIcon>
-                      <ExternalLinkIcon
-                        href={projeto.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("site_label")}
-                      >
-                        <FaExternalLinkAlt />
-                      </ExternalLinkIcon>
+                      {projeto.github && (
+                        <ExternalLinkIcon
+                          href={projeto.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={t("github_label")}
+                        >
+                          <FaGithub />
+                        </ExternalLinkIcon>
+                      )}
+                      {projeto.link && (
+                        <ExternalLinkIcon
+                          href={projeto.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={t("site_label")}
+                        >
+                          <FaExternalLinkAlt />
+                        </ExternalLinkIcon>
+                      )}
                     </LinkContainer>
                   )}
                 </div>
