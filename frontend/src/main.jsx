@@ -1,21 +1,26 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { GlobalStyle } from "./styles/GlobalStyle.js";
 import { darkTheme, lightTheme } from "./styles/theme.js";
 import { ThemeProvider } from "styled-components";
 import App from "./App.jsx";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n.js";
+import { store } from "./store";
+import { toggleTheme } from "./store/settingsSlice";
 
 function ThemedApp() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.settings.theme);
+  const isDarkMode = theme === "dark";
 
-  const toggleTheme = () => setIsDarkMode((prev) => !prev);
+  const handleToggleTheme = () => dispatch(toggleTheme());
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <App toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+      <App toggleTheme={handleToggleTheme} isDarkMode={isDarkMode} />
     </ThemeProvider>
   );
 }
@@ -23,7 +28,9 @@ function ThemedApp() {
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <I18nextProvider i18n={i18n}>
-      <ThemedApp />
+      <Provider store={store}>
+        <ThemedApp />
+      </Provider>
     </I18nextProvider>
   </StrictMode>
 );
