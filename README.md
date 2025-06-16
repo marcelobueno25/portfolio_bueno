@@ -12,12 +12,12 @@ Aplicação React com Vite que agora possui um pequeno backend em Node.js para i
 2. Instale as dependências de cada parte:
    ```bash
    npm install --prefix frontend
-   npm dev --prefix server
+   npm install --prefix server
    ```
 3. Em terminais separados, rode:
    ```bash
    npm run dev --prefix frontend
-   npm start --prefix server
+   npm run dev --prefix server
    ```
 
 O front-end fica em `http://localhost:5173` e as requisições para o chat são enviadas para `http://localhost:3001/api/chat`.
