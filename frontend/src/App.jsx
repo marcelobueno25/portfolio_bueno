@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Intro from "@/pages/Intro";
 import AppRoutes from "./routes";
-import ChatWidget from "@/components/ChatWidget";
+
+const ChatWidget = lazy(() => import("@/components/ChatWidget"));
 
 function App({ toggleTheme, isDarkMode }) {
   return (
@@ -12,7 +13,9 @@ function App({ toggleTheme, isDarkMode }) {
       <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <AppRoutes />
       <Footer />
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </>
   );
 }
