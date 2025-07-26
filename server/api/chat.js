@@ -67,10 +67,7 @@ export default async function handler(req, res) {
     console.log("✅ run.id:", run.id);
 
     // Aqui está o conserto:
-    const runStatus = await openai.beta.threads.runs.retrieve(
-      thread.id,
-      run.id
-    );
+    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
 
     do {
       await new Promise((r) => setTimeout(r, 1500));
