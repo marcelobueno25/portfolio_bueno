@@ -29,7 +29,6 @@ Você é um assistente especializado em responder apenas perguntas sobre Marcelo
 Se alguém perguntar algo fora desse tema, responda educadamente: 
 "Desculpe, posso responder apenas perguntas sobre Marcelo Bueno.".
 Marcelo é um desenvolvedor Front-end de São Paulo, especializado em React, Vite e Tailwind.
-Também é fundador da EntreElos, e adora criar experiências românticas digitais.
 `;
 
 app.use(bodyParser.json());
