@@ -31,7 +31,6 @@ export default async function handler(req, res) {
   if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
   try {
-    // Limite de requisições
     await new Promise((resolve, reject) => {
       limiter(req, res, (result) => {
         if (result instanceof Error) return reject(result);
@@ -41,46 +40,48 @@ export default async function handler(req, res) {
 
     if (res.headersSent) return;
 
-    // 1. Criar thread
+    // Cria a thread
     const thread = await openai.beta.threads.create();
     console.log("🧵 thread.id:", thread.id);
 
-    // 2. Adicionar mensagem
+    // Adiciona a mensagem do usuário
     await openai.beta.threads.messages.create(thread.id, {
       role: "user",
       content: message,
     });
 
-    // 3. Criar execução
+    // Cria o run
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    console.log("🚀 run.id:", run.id);
+    console.log("✅ run.id:", run.id);
 
-    // 4. Aguardar conclusão
-    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
-    while (runStatus.status !== "completed") {
+    // Aguarda o run finalizar
+    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id); // ✅ ORDEM CERTA
+    while (runStatus.status !== "completed" && runStatus.status !== "failed") {
       await new Promise((r) => setTimeout(r, 1500));
-      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id); // ✅ MANTÉM A ORDEM CERTA
       console.log("⏳ Status:", runStatus.status);
     }
 
-    // 5. Buscar resposta
+    if (runStatus.status === "failed") {
+      return res.status(500).json({ error: "Execução do Assistant falhou." });
+    }
+
+    // Recupera a resposta final
     const messages = await openai.beta.threads.messages.list(thread.id);
-    const lastMessage = messages.data.find((m) => m.role === "assistant");
-    const reply = lastMessage?.content?.[0]?.text?.value || "Sem resposta";
+    const last = messages.data.find((m) => m.role === "assistant");
+    const reply =
+      last?.content?.[0]?.text?.value || "Sem resposta do assistant.";
 
     return res.status(200).json({ reply });
   } catch (error) {
     console.error("❌ ERRO COM ASSISTANT");
-    console.error(error);
-
-    const errorMessage =
-      error?.message ||
-      error?.response?.data?.error?.message ||
-      "Erro desconhecido";
-
-    return res.status(500).json({ error: errorMessage });
+    console.error("Mensagem:", error.message);
+    console.error("Stack:", error.stack);
+    return res
+      .status(500)
+      .json({ error: error.message || "Erro desconhecido." });
   }
 }
