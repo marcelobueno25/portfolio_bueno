@@ -55,7 +55,18 @@ export default async function handler(req, res) {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    console.log("✅ run.id:", run.id);
+    if (!run || !run.id) {
+      console.error("❌ Erro ao criar o run");
+      return res.status(500).json({ error: "Falha ao iniciar o assistant." });
+    }
+
+    console.log("🧵 thread.id:", thread.id);
+    console.log("📨 message adicionado");
+    console.log(
+      "🚀 Criando run para assistant_id:",
+      process.env.OPENAI_ASSISTANT_ID
+    );
+    console.log("✅ run criado:", run);
 
     // Aguarda o run finalizar
     let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id); // ✅ ORDEM CERTA
