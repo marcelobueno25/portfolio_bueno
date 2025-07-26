@@ -75,6 +75,10 @@ export default async function handler(req, res) {
     return res.status(200).json({ reply });
   } catch (error) {
     console.error("Erro com Assistant:", error);
+    if (error.response) {
+      console.error("Status:", error.response.status);
+      console.error("Dados:", error.response.data);
+    }
     return res.status(500).json({ error: "Erro ao usar Assistant" });
   }
 }
