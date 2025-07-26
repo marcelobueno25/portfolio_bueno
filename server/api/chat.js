@@ -42,6 +42,8 @@ export default async function handler(req, res) {
 
     // Cria a thread
     const thread = await openai.beta.threads.create();
+    if (!thread?.id) throw new Error("Erro ao criar thread");
+
     console.log("🧵 thread.id:", thread.id);
 
     // Adiciona a mensagem do usuário
@@ -49,42 +51,43 @@ export default async function handler(req, res) {
       role: "user",
       content: message,
     });
+    console.log("📨 Mensagem adicionada na thread");
 
     // Cria o run
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    if (!run || !run.id) {
-      console.error("❌ Erro ao criar o run");
-      return res.status(500).json({ error: "Falha ao iniciar o assistant." });
+    if (!run?.id) {
+      throw new Error("Run não foi criado corretamente.");
     }
 
-    console.log("🧵 thread.id:", thread.id);
-    console.log("📨 message adicionado");
-    console.log(
-      "🚀 Criando run para assistant_id:",
-      process.env.OPENAI_ASSISTANT_ID
-    );
-    console.log("✅ run criado:", run);
+    console.log("🚀 Run criado com ID:", run.id);
 
     // Aguarda o run finalizar
-    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id); // ✅ ORDEM CERTA
-    while (runStatus.status !== "completed" && runStatus.status !== "failed") {
+    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+
+    while (
+      runStatus.status !== "completed" &&
+      runStatus.status !== "failed" &&
+      runStatus.status !== "cancelled"
+    ) {
+      console.log("⏳ Status atual:", runStatus.status);
       await new Promise((r) => setTimeout(r, 1500));
-      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id); // ✅ MANTÉM A ORDEM CERTA
-      console.log("⏳ Status:", runStatus.status);
+      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
     }
 
     if (runStatus.status === "failed") {
+      console.error("❌ Run falhou");
       return res.status(500).json({ error: "Execução do Assistant falhou." });
     }
 
     // Recupera a resposta final
     const messages = await openai.beta.threads.messages.list(thread.id);
-    const last = messages.data.find((m) => m.role === "assistant");
+    const assistantMessage = messages.data.find((m) => m.role === "assistant");
     const reply =
-      last?.content?.[0]?.text?.value || "Sem resposta do assistant.";
+      assistantMessage?.content?.[0]?.text?.value ||
+      "Sem resposta do assistant.";
 
     return res.status(200).json({ reply });
   } catch (error) {
