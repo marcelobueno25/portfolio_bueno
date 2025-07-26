@@ -4,6 +4,8 @@ import rateLimit from "express-rate-limit";
 const limiter = rateLimit({
   windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
   max: Number(process.env.RATE_LIMIT_MAX) || 5,
+  keyGenerator: (req) =>
+    req.headers["x-forwarded-for"] || req.headers["x-real-ip"] || "global",
   message: {
     error:
       "Você enviou muitas mensagens em sequência. Tente novamente em 1 minuto.",
@@ -48,6 +50,7 @@ export default async function handler(req, res) {
   try {
     // 1. Cria uma nova thread (ou recupere uma existente para histórico)
     const thread = await openai.beta.threads.create();
+    console.log("🧵 thread.id:", thread.id); // Adicione isso
 
     // 2. Adiciona a mensagem do usuário
     await openai.beta.threads.messages.create(thread.id, {
@@ -55,7 +58,7 @@ export default async function handler(req, res) {
       content: message,
     });
 
-    // 3. Inicia o run com o Assistant já criado
+    // Certifique-se de passar corretamente:
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
@@ -74,10 +77,12 @@ export default async function handler(req, res) {
     const reply = lastMessage?.content?.[0]?.text?.value || "Sem resposta";
     return res.status(200).json({ reply });
   } catch (error) {
-    console.error("Erro com Assistant:", error);
+    console.error("❌ ERRO COM ASSISTANT");
+    console.error("Mensagem:", error.message);
+    console.error("Status:", error.status);
     if (error.response) {
-      console.error("Status:", error.response.status);
-      console.error("Dados:", error.response.data);
+      console.error("Response Status:", error.response.status);
+      console.error("Response Data:", error.response.data);
     }
     return res.status(500).json({ error: "Erro ao usar Assistant" });
   }
