@@ -63,8 +63,15 @@ export default async function handler(req, res) {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    // 4. Aguarda até que o run termine (polling simples)
-    let runStatus;
+    console.log("✅ thread.id:", thread.id);
+    console.log("✅ run.id:", run.id);
+
+    // Aqui está o conserto:
+    const runStatus = await openai.beta.threads.runs.retrieve(
+      thread.id,
+      run.id
+    );
+
     do {
       await new Promise((r) => setTimeout(r, 1500));
       runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
