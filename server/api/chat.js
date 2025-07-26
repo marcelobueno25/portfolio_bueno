@@ -19,7 +19,6 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-  // 🔐 CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -31,63 +30,57 @@ export default async function handler(req, res) {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
-  // 🧠 Controle de requisições
-  const runLimiter = () =>
-    new Promise((resolve, reject) => {
+  try {
+    // Limite de requisições
+    await new Promise((resolve, reject) => {
       limiter(req, res, (result) => {
         if (result instanceof Error) return reject(result);
-        return resolve(result);
+        resolve(result);
       });
     });
 
-  try {
-    await runLimiter();
     if (res.headersSent) return;
-  } catch {
-    return;
-  }
 
-  try {
-    // 1. Cria uma nova thread (ou recupere uma existente para histórico)
+    // 1. Criar thread
     const thread = await openai.beta.threads.create();
-    console.log("🧵 thread.id:", thread.id); // Adicione isso
+    console.log("🧵 thread.id:", thread.id);
 
-    // 2. Adiciona a mensagem do usuário
+    // 2. Adicionar mensagem
     await openai.beta.threads.messages.create(thread.id, {
       role: "user",
       content: message,
     });
 
-    // Certifique-se de passar corretamente:
+    // 3. Criar execução
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    console.log("✅ thread.id:", thread.id);
-    console.log("✅ run.id:", run.id);
+    console.log("🚀 run.id:", run.id);
 
-    // Aqui está o conserto:
+    // 4. Aguardar conclusão
     let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
-
-    do {
+    while (runStatus.status !== "completed") {
       await new Promise((r) => setTimeout(r, 1500));
       runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
-    } while (runStatus.status !== "completed");
+      console.log("⏳ Status:", runStatus.status);
+    }
 
-    // 5. Recupera a resposta final
+    // 5. Buscar resposta
     const messages = await openai.beta.threads.messages.list(thread.id);
-    const lastMessage = messages.data.find((msg) => msg.role === "assistant");
-
+    const lastMessage = messages.data.find((m) => m.role === "assistant");
     const reply = lastMessage?.content?.[0]?.text?.value || "Sem resposta";
+
     return res.status(200).json({ reply });
   } catch (error) {
     console.error("❌ ERRO COM ASSISTANT");
-    console.error("Mensagem:", error.message);
-    console.error("Status:", error.status);
-    if (error.response) {
-      console.error("Response Status:", error.response.status);
-      console.error("Response Data:", error.response.data);
-    }
-    return res.status(500).json({ error: "Erro ao usar Assistant" });
+    console.error(error);
+
+    const errorMessage =
+      error?.message ||
+      error?.response?.data?.error?.message ||
+      "Erro desconhecido";
+
+    return res.status(500).json({ error: errorMessage });
   }
 }
