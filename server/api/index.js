@@ -7,23 +7,14 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-app.use(cors()); // ← habilita CORS para todas as origens
+app.use(
+  cors({
+    origin: "https://portfolio-bueno-ten.vercel.app",
+    methods: ["GET", "POST", "OPTIONS"], // Métodos permitidos
+    allowedHeaders: ["Content-Type"], // Cabeçalhos permitidos
+  })
+);
 app.use(express.json());
-
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://portfolio-bueno-ten.vercel.app"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200); // Finaliza a requisição OPTIONS
-  }
-
-  next();
-});
 
 // Configurar rate limiter
 const limiter = rateLimit({
