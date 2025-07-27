@@ -28,7 +28,6 @@ export default async function handler(req, res) {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Método não permitido" });
 
-  // Aplicar o rate limiter manualmente
   try {
     await new Promise((resolve, reject) => {
       limiter(req, res, (result) => {
@@ -40,24 +39,26 @@ export default async function handler(req, res) {
     return res.status(429).json(limiterError);
   }
 
-  const { message } = req.body;
+  const { message, thread_id } = req.body;
   if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
   try {
-    const thread = await openai.beta.threads.create();
-    await openai.beta.threads.messages.create(thread.id, {
+    // Reutiliza a thread, ou cria uma nova
+    const threadId = thread_id || (await openai.beta.threads.create()).id;
+
+    await openai.beta.threads.messages.create(threadId, {
       role: "user",
       content: message,
     });
 
-    const run = await openai.beta.threads.runs.create(thread.id, {
+    const run = await openai.beta.threads.runs.create(threadId, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
     let completedRun;
     while (true) {
       completedRun = await openai.beta.threads.runs.retrieve(run.id, {
-        thread_id: thread.id,
+        thread_id: threadId,
       });
 
       if (completedRun.status === "completed") break;
@@ -68,13 +69,13 @@ export default async function handler(req, res) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
-    const messages = await openai.beta.threads.messages.list(thread.id);
+    const messages = await openai.beta.threads.messages.list(threadId);
     const assistantMessage = messages.data.find((m) => m.role === "assistant");
     const reply =
       assistantMessage?.content?.[0]?.text?.value ||
       "Sem resposta do assistant.";
 
-    return res.status(200).json({ resposta: reply });
+    return res.status(200).json({ resposta: reply, thread_id: threadId });
   } catch (error) {
     console.error("❌ Erro:", error);
     return res.status(500).json({ error: "Erro interno no servidor." });

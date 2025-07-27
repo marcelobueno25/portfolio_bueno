@@ -169,13 +169,17 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, { from: "bot", text: "..." }]);
 
     try {
+      let threadId = localStorage.getItem("thread_id");
+
       const res = await fetch(`${API_URL}/api/chat.js`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText }),
+        body: JSON.stringify({ message: "Oi!", thread_id: threadId }),
       });
 
       const data = await res.json();
+      threadId = data.thread_id;
+      localStorage.setItem("thread_id", threadId);
 
       if (!res.ok) {
         if (res.status === 429) {
