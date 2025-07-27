@@ -1,6 +1,14 @@
+import express from "express";
+import dotenv from "dotenv";
 import OpenAI from "openai";
 import rateLimit from "express-rate-limit";
 
+dotenv.config();
+
+const app = express();
+app.use(express.json());
+
+// Configurar rate limiter
 const limiter = rateLimit({
   windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
   max: Number(process.env.RATE_LIMIT_MAX) || 5,
@@ -18,28 +26,21 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export default async function handler(req, res) {
+// Middleware CORS básico
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.sendStatus(200);
+  next();
+});
 
-  if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method !== "POST")
-    return res.status(405).json({ error: "Método não permitido" });
-
+// Rota principal
+app.post("/api/chat", limiter, async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: "Mensagem ausente" });
 
   try {
-    await new Promise((resolve, reject) => {
-      limiter(req, res, (result) => {
-        if (result instanceof Error) return reject(result);
-        resolve(result);
-      });
-    });
-
-    if (res.headersSent) return;
-
     // Cria a thread
     const thread = await openai.beta.threads.create();
     if (!thread?.id) throw new Error("Erro ao criar thread");
@@ -51,37 +52,45 @@ export default async function handler(req, res) {
       role: "user",
       content: message,
     });
-    console.log("📨 Mensagem adicionada na thread");
 
     // Cria o run
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
 
-    if (!run?.id) {
-      throw new Error("Run não foi criado corretamente.");
+    // Executa o assistant com a thread criada
+    if (!run || !run.id) {
+      return res
+        .status(500)
+        .json({ error: "Erro ao criar o run do Assistant." });
     }
 
-    console.log("🚀 Run criado com ID:", run.id);
+    console.log("➡️ run.id:", run.id);
 
-    // Aguarda o run finalizar
-    let runStatus = openai.beta.threads.runs.retrieve(run.id, {
-      thread_id: thread.id,
-    });
+    // Espera a conclusão do run
+    let completedRun;
 
-    while (
-      runStatus.status !== "completed" &&
-      runStatus.status !== "failed" &&
-      runStatus.status !== "cancelled"
-    ) {
-      console.log("⏳ Status atual:", runStatus.status);
-      await new Promise((r) => setTimeout(r, 1500));
-      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
-    }
+    while (true) {
+      console.log("⏳ Aguardando finalização do run...");
+      console.log("➡️ thread.id:", thread.id);
+      console.log("➡️ run.id:", run.id);
 
-    if (runStatus.status === "failed") {
-      console.error("❌ Run falhou");
-      return res.status(500).json({ error: "Execução do Assistant falhou." });
+      try {
+        completedRun = await openai.beta.threads.runs.retrieve(run.id, {
+          thread_id: thread.id,
+        });
+      } catch (err) {
+        console.error("❌ Erro na chamada retrieve:", err);
+        return res.status(500).json({ error: "Erro ao recuperar o run." });
+      }
+
+      if (completedRun.status === "completed") break;
+      if (completedRun.status === "failed") {
+        console.error("Assistant run failed:", completedRun); // Log the failed run object
+        return res.status(500).json({ error: "O assistente falhou." });
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
     // Recupera a resposta final
@@ -100,4 +109,10 @@ export default async function handler(req, res) {
       .status(500)
       .json({ error: error.message || "Erro desconhecido." });
   }
-}
+});
+
+// Inicia servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+});

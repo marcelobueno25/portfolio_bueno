@@ -169,7 +169,7 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, { from: "bot", text: "..." }]);
 
     try {
-      const res = await fetch(`${API_URL}/api/chat.js`, {
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
@@ -188,7 +188,7 @@ export default function ChatWidget() {
 
       setMessages((prev) => [
         ...prev.slice(0, -1),
-        { from: "bot", text: data.reply },
+        { from: "bot", text: data.resposta },
       ]);
     } catch (err) {
       setMessages((prev) => [

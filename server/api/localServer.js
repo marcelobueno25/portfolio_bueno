@@ -36,8 +36,9 @@ app.post("/api/chat", async (req, res) => {
 
     // Executa o assistant com a thread criada
     const run = await openai.beta.threads.runs.create(thread.id, {
-      assistant_id: "asst_Vu0SfLBI0psxOlPavI9qUD83",
+      assistant_id: process.env.OPENAI_ASSISTANT_ID,
     });
+
     console.log("Run criado com ID:", run.id); // Log run ID
 
     if (!run || !run.id) {
