@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: "https://portfolio-bueno-ten.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "OPTIONS"], // Métodos permitidos
     allowedHeaders: ["Content-Type"], // Cabeçalhos permitidos
   })
