@@ -65,7 +65,9 @@ export default async function handler(req, res) {
     console.log("🚀 Run criado com ID:", run.id);
 
     // Aguarda o run finalizar
-    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+    let runStatus = openai.beta.threads.runs.retrieve(run.id, {
+      thread_id: thread.id,
+    });
 
     while (
       runStatus.status !== "completed" &&
