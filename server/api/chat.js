@@ -2,10 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import rateLimit from "express-rate-limit";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(cors()); // ← habilita CORS para todas as origens
 app.use(express.json());
 
 // Configurar rate limiter
@@ -24,15 +26,6 @@ const limiter = rateLimit({
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
-
-// Middleware CORS básico
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (req.method === "OPTIONS") return res.sendStatus(200);
-  next();
 });
 
 // Rota principal
